@@ -69,10 +69,10 @@
             >
               Now Playing :
             </p>
-            <div class="imageWrap relative">
-              <img :src="song.img" alt="" class="w-3/4 max-sm:self-center" />
+            <div class="imageWrap relative flex max-sm:justify-center">
+              <img :src="song.img" alt="" class="w-3/4" />
               <div
-                class="visualizer absolute h-8 w-8 p-2 rounded-lg opacity-60 bg-white left-2 bottom-2 z-10 flex items-end gap-1"
+                class="visualizer absolute h-8 w-8 p-2 rounded-lg self-center opacity-60 bg-white left-2 bottom-2 z-10 flex items-end gap-1 max-sm:left-10"
               >
                 <div class="bar1 animate-visual-bar w-2 bg-gray-800 z-10"></div>
                 <div class="bar2 animate-visual-bar w-2 bg-gray-800 z-10"></div>
