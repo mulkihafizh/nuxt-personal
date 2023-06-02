@@ -148,14 +148,17 @@ export default {
     });
     axios.get("/api/now-playing").then((res) => {
       const data = res.data;
-      this.song = {
-        name: data.title,
-        img: data.image,
-        artist: data.artist,
-        duration: data.duration,
-        url: data.url,
-      };
       this.isPlaying = data.isPlaying;
+
+      if (this.isPlaying == true) {
+        this.song = {
+          name: data.title,
+          img: data.image,
+          artist: data.artist,
+          duration: data.duration,
+          url: data.url,
+        };
+      }
       this.isNowPlayingLoaded = true;
     });
     axios.get("/api/top-artist").then((res) => {
@@ -194,7 +197,11 @@ export default {
   },
   methods: {
     songProgress() {
-      if (this.isLoaded === true && this.isNowPlayingLoaded === true) {
+      if (
+        this.isLoaded === true &&
+        this.isNowPlayingLoaded === true &&
+        this.isPlaying === true
+      ) {
         const progress = (this.currentTime / this.song.duration) * 100;
         this.progress = progress;
       }
@@ -203,14 +210,17 @@ export default {
       if (this.isLoaded === true) {
         axios.get("/api/now-playing").then((res) => {
           const data = res.data;
-          this.song = {
-            name: data.title,
-            img: data.albumImageUrl,
-            artist: data.artist,
-            url: data.url,
-            duration: data.duration,
-          };
           this.isPlaying = data.isPlaying;
+
+          if (this.isPlaying == true) {
+            this.song = {
+              name: data.title,
+              img: data.albumImageUrl,
+              artist: data.artist,
+              url: data.url,
+              duration: data.duration,
+            };
+          }
           this.isNowPlayingLoaded = true;
         });
       }

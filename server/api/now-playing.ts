@@ -2,11 +2,14 @@ import { getNowPlaying } from "../../lib/spotify";
 
 export default eventHandler(async () => {
   const response = await getNowPlaying();
-  if (response === null) {
-    return { isPlaying: false, data: null };
+  if (response.status == 204 || response.status > 400) {
+    return {
+      isPlaying: false,
+    };
   }
   const song = await response.json();
   const isPlaying = song.is_playing;
+
   const title = song.item.name;
   const artist = song.item.artists
     .map((_artist: any) => _artist.name)
