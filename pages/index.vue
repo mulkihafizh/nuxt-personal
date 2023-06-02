@@ -72,7 +72,7 @@
             <img
               :src="song.img"
               alt=""
-              class="w-3/4 self-center z-10 relative"
+              class="w-3/4 max-sm:self-center z-10 relative"
             />
             <p class="text-white text-2xl max-sm:text-xl font-bold pt-4">
               {{ song.name }}
@@ -102,7 +102,11 @@
             >
               Last Played:
             </p>
-            <img :src="lastPlayed.img" alt="" class="w-3/4 self-center z-10" />
+            <img
+              :src="lastPlayed.img"
+              alt=""
+              class="w-3/4 max-sm:self-center z-10"
+            />
             <p class="text-white text-2xl font-bold pt-4">
               {{ lastPlayed.name }}
             </p>
@@ -133,7 +137,7 @@
             <img
               :src="topArtist.img"
               alt=""
-              class="w-3/4 w-3/4self-center rounded-full"
+              class="w-3/4 self-center rounded-full"
             />
             <p class="text-white text-2xl max-sm:text-base font-bold pt-4">
               {{ topArtist.name }}
@@ -154,7 +158,7 @@
             >
               Top Song This Month
             </p>
-            <img :src="topTrack.img" alt="" class="w-3/4 w-3/4self-center" />
+            <img :src="topTrack.img" alt="" class="w-3/4" />
             <p class="text-white text-2xl max-sm:text-base font-bold pt-4">
               {{ topTrack.name }}
             </p>
