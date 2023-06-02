@@ -69,11 +69,16 @@
             >
               Now Playing :
             </p>
-            <img
-              :src="song.img"
-              alt=""
-              class="w-3/4 max-sm:self-center z-10 relative"
-            />
+            <div class="imageWrap relative">
+              <img :src="song.img" alt="" class="w-3/4 max-sm:self-center" />
+              <div
+                class="visualizer absolute h-6 w-16 left-2 bottom-2 z-10 flex items-end gap-1"
+              >
+                <div class="bar1 animate-visual-bar w-2 bg-gray-800 z-10"></div>
+                <div class="bar2 animate-visual-bar w-2 bg-gray-800 z-10"></div>
+                <div class="bar3 animate-visual-bar w-2 bg-gray-800 z-10"></div>
+              </div>
+            </div>
             <p class="text-white text-2xl max-sm:text-xl font-bold pt-4">
               {{ song.name }}
             </p>

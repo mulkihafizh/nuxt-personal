@@ -27,6 +27,15 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
+      keyframes: {
+        "visual-bar": {
+          "0%, 100%": { height: "20%", opacity: 0.5 },
+          "50%": { height: "100%", opacity: 1 },
+        },
+      },
+      animation: {
+        "visual-bar": "visual-bar 1.5s ease-in-out infinite",
+      },
       colors: {
         dark: "#1A202C",
         "dark-text": "#F7FAFC",

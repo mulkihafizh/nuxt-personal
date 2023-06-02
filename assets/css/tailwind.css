@@ -35,8 +35,15 @@
 
 @font-face {
   font-family: "programmeregular";
-  src: url("programme-regular-webfont.woff2") format("woff2"),
-    url("programme-regular-webfont.woff") format("woff");
+  src: url("../../fonts/programme-regular-webfont.woff2") format("woff2"),
+    url("../../fonts/programme-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+.bar1 {
+  animation-delay: 0.5s;
+}
+.bar3 {
+  animation-delay: 0.2s;
 }
