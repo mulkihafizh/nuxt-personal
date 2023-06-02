@@ -6,6 +6,7 @@ const refresh_token =
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
 const TOP_ARTIST_ENDPOINT = `https://api.spotify.com/v1/me/top/artists`;
+const LAST_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`;
 const ME = `https://api.spotify.com/v1/me`;
 const TOP_TRACKS_DEFAULT_PARAMS = {
   time_range: "short_term",
@@ -59,6 +60,15 @@ export const getTopArtists = async () => {
   const { access_token } = await getAccessToken();
   const queryParams = new URLSearchParams(TOP_ARTIST_DEFAULT_PARAMS).toString();
   return fetch(TOP_ARTIST_ENDPOINT + "?" + queryParams, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
+};
+
+export const getLastPlayed = async () => {
+  const { access_token } = await getAccessToken();
+  return fetch(LAST_PLAYED_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
