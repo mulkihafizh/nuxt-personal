@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.borderNuxt {
+  background: radial-gradient(
+        circle at 100% 100%,
+        #ffffff 0,
+        #ffffff 23px,
+        transparent 23px
+      )
+      0% 0%/24px 24px no-repeat,
+    radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 23px, transparent 23px)
+      100% 0%/24px 24px no-repeat,
+    radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 23px, transparent 23px)
+      0% 100%/24px 24px no-repeat,
+    radial-gradient(circle at 0 0, #ffffff 0, #ffffff 23px, transparent 23px)
+      100% 100%/24px 24px no-repeat,
+    linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 2px)
+      calc(100% - 48px) no-repeat,
+    linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 48px)
+      calc(100% - 2px) no-repeat,
+    conic-gradient(
+      #00ff00 0%,
+      #00ffff 16.67%,
+      #00ff00 33.33%,
+      #00ffff 50%,
+      #00ff00 66.67%,
+      #00ffff 83.33%,
+      #00ff00 100%
+    );
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "programmeregular";
+  src: url("programme-regular-webfont.woff2") format("woff2"),
+    url("programme-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
