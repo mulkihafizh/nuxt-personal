@@ -1,14 +1,21 @@
 <template>
   <div id="body" class="bg-zinc-950">
-    <div id="header" class="h-screen grid grid-cols-2 px-20">
-      <div class="headerText flex flex-col justify-center gap-5">
+    <div
+      id="header"
+      class="h-screen grid max-sm:grid-cols-1 grid-cols-2 px-[10%]"
+    >
+      <div
+        class="headerText flex flex-col justify-center gap-5 max-sm:order-2 max-sm:text-center max-sm:items-center"
+      >
         <p
           v-if="isLoaded === true && isUserLoaded === true"
-          class="text-6xl text-white font-bold"
+          class="text-6xl max-sm:text-2xl text-white font-bold"
         >
           Hi, I am {{ user.name }}
         </p>
-        <p class="text-xl text-white font-medium max-w-2xl leading-10">
+        <p
+          class="text-xl max-sm:text-sm text-white font-medium max-w-2xl leading-10"
+        >
           I'm a passionate individual with a diverse range of interests and
           hobbies. <br />
           I enjoy exploring new technologies and building web applications.
@@ -18,14 +25,16 @@
             class="borderNuxt rounded-3xl hover:-translate-y-3 duration-300 shadow hover:shadow-white"
           >
             <button
-              class="bg-zinc-900 text-white px-12 py-5 text-xl rounded-3xl"
+              class="bg-zinc-900 text-white px-12 py-5 text-xl rounded-3xl max-sm:px-6 max-sm:py-3 max-sm:text-base"
             >
               Learn More About Me
             </button>
           </div>
         </div>
       </div>
-      <div class="headerProfile flex items-center justify-center">
+      <div
+        class="headerProfile flex items-center justify-center max-sm:order-1"
+      >
         <div class="profileImage">
           <img
             v-if="isLoaded === true && isUserLoaded === true"
@@ -44,21 +53,33 @@
           isNowPlayingLoaded &&
           isTopTrackLoaded
         "
-        class="px-20 py-5"
+        class="px-[10%] py-5"
       >
         <div
-          class="wrapSpotify bg-zinc-900 p-10 rounded-3xl grid grid-cols-3 gap-5"
+          class="wrapSpotify bg-zinc-900 p-[5%] rounded-3xl grid grid-cols-3 gap-5 max-md:grid-cols-2"
         >
           <a
             :href="song.url"
             target="_blank"
-            class="wrapSong hover:bg-zinc-800 duration-300 rounded-3xl p-10 relative overflow-hidden"
+            class="wrapSong hover:bg-zinc-800 flex flex-col duration-300 rounded-3xl p-[5%] relative overflow-hidden max-sm:col-span-2"
             v-if="isPlaying === true"
           >
-            <p class="text-white text-3xl font-bold pb-4 z-10">Now Playing:</p>
-            <img :src="song.img" alt="" class="w-60 h-60 z-10 relative" />
-            <p class="text-white text-2xl font-bold pt-4">{{ song.name }}</p>
-            <p class="text-white text-xl font-medium">{{ song.artist }}</p>
+            <p
+              class="text-white text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
+            >
+              Now Playing:
+            </p>
+            <img
+              :src="song.img"
+              alt=""
+              class="w-3/4 self-center z-10 relative"
+            />
+            <p class="text-white text-2xl max-sm:text-xl font-bold pt-4">
+              {{ song.name }}
+            </p>
+            <p class="text-white text-xl max-sm:text-l font-medium">
+              {{ song.artist }}
+            </p>
             <p class="text-white text-l">
               {{ formatDuration(currentTime) }} /
               {{ formatDuration(song.duration) }}
@@ -74,10 +95,14 @@
             :href="lastPlayed.url"
             target="_blank"
             v-else-if="isPlaying === false && isLastPlayedLoaded === true"
-            class="hover:bg-zinc-800 duration-300 rounded-3xl p-10 relative overflow-hidden"
+            class="hover:bg-zinc-800 duration-300 rounded-3xl p-[5%] relative overflow-hidden max-sm:col-span-2 flex flex-col"
           >
-            <p class="text-white text-3xl font-bold pb-4 z-10">Last Played:</p>
-            <img :src="lastPlayed.img" alt="" class="w-60 h-60 z-10 relative" />
+            <p
+              class="text-white text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
+            >
+              Last Played:
+            </p>
+            <img :src="lastPlayed.img" alt="" class="w-3/4 self-center z-10" />
             <p class="text-white text-2xl font-bold pt-4">
               {{ lastPlayed.name }}
             </p>
@@ -98,30 +123,44 @@
           <a
             :href="topArtist.url"
             target="_blank"
-            class="wrapTopArtist hover:bg-zinc-800 rounded-3xl duration-300 p-10 flex flex-col items-center"
+            class="wrapTopArtist hover:bg-zinc-800 rounded-3xl max-md:order-3 max-sm:order-2 max-md:col-span-2 duration-300 p-[5%] flex flex-col items-center max-sm:items-start max-sm:col-span-1"
           >
-            <p class="text-white text-3xl font-bold pb-4">
+            <p
+              class="text-white text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4"
+            >
               Top Artist This Month
             </p>
-            <img :src="topArtist.img" alt="" class="w-60 h-60 rounded-full" />
-            <p class="text-white text-2xl font-bold pt-4">
+            <img
+              :src="topArtist.img"
+              alt=""
+              class="w-3/4 w-3/4self-center rounded-full"
+            />
+            <p class="text-white text-2xl max-sm:text-base font-bold pt-4">
               {{ topArtist.name }}
             </p>
-            <p class="text-white text-xl font-medium">{{ topArtist.genre }}</p>
+            <p
+              class="text-white text-xl font-medium max-sm:text-base max-sm:text-start"
+            >
+              {{ topArtist.genre }}
+            </p>
           </a>
           <a
             :href="topTrack.url"
             target="_blank"
-            class="wrapSong hover:bg-zinc-800 rounded-3xl duration-300 p-10 flex flex-col items-end"
+            class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 p-[5%] flex flex-col items-end"
           >
-            <p class="text-white text-3xl font-bold pb-4">
+            <p
+              class="text-white text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 max-sm:text-end"
+            >
               Top Song This Month
             </p>
-            <img :src="topTrack.img" alt="" class="w-60 h-60" />
-            <p class="text-white text-2xl font-bold pt-4">
+            <img :src="topTrack.img" alt="" class="w-3/4 w-3/4self-center" />
+            <p class="text-white text-2xl max-sm:text-base font-bold pt-4">
               {{ topTrack.name }}
             </p>
-            <p class="text-white text-xl font-medium">{{ topTrack.artist }}</p>
+            <p class="text-white text-xl max-sm:text-base font-medium">
+              {{ topTrack.artist }}
+            </p>
           </a>
         </div>
       </div>
