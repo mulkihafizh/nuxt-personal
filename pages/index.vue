@@ -67,7 +67,7 @@
             <p
               class="text-white text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
             >
-              Now Playing:
+              Now Playing :
             </p>
             <img
               :src="song.img"
@@ -100,7 +100,7 @@
             <p
               class="text-white text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
             >
-              Last Played:
+              Last Played :
             </p>
             <img
               :src="lastPlayed.img"
@@ -130,7 +130,7 @@
             class="wrapTopArtist hover:bg-zinc-800 rounded-3xl max-md:order-3 max-sm:order-2 max-md:col-span-2 duration-300 p-[5%] flex flex-col items-center max-sm:items-start max-sm:col-span-1"
           >
             <p
-              class="text-white text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4"
+              class="text-white text-3xl max-lg:text-2xl text-center max-sm:text-start max-sm:text-sm font-bold pb-4"
             >
               Top Artist This Month
             </p>
@@ -154,7 +154,7 @@
             class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 p-[5%] flex flex-col items-end"
           >
             <p
-              class="text-white text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 max-sm:text-end"
+              class="text-white text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 text-end"
             >
               Top Song This Month
             </p>
