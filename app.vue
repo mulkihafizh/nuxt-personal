@@ -1,5 +1,8 @@
 <template>
-  <div class="font-gay">
+  <Head>
+    <Title>Home</Title>
+  </Head>
+  <div class="font-main">
     <NuxtPage />
   </div>
 </template>
