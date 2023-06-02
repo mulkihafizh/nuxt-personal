@@ -1,8 +1,3 @@
-const client_id = "7b5af824f38d4aa4930218f1784fe2f7";
-const client_secret = "2fcafad8943f4352a27df8fc1f86237d";
-const refresh_token =
-  "AQAUTb7dufXUTrVBW8rD5JBI04SLRv4knbxCl4Bk2AaLgcGQXhlBvW5nURBr54K0wDgr1HucWZTF8Z4aUJ3wGPRccmj77LWQ5Y5VHacJmjVDW7ZDo7UGNHnoiSBXvmomCiU";
-
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
 const TOP_ARTIST_ENDPOINT = `https://api.spotify.com/v1/me/top/artists`;
@@ -21,6 +16,10 @@ const TOP_ARTIST_DEFAULT_PARAMS = {
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 export const getAccessToken = async () => {
+  const config = useRuntimeConfig();
+  const client_id = config.spotifyClientId as string;
+  const client_secret = config.spotifyClientSecret as string;
+  const refresh_token = config.spotifyRefreshToken as string;
   const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
   const response = await fetch(TOKEN_ENDPOINT, {
     method: "POST",

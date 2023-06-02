@@ -8,8 +8,8 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    spotifyClientId: process.env.SPOTIFY_CLIENT_ID,
-    spotifyClientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-    spotifyRefreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+    spotifyClientId: process.env.CLIENT_ID,
+    spotifyClientSecret: process.env.CLIENT_SECRET,
+    spotifyRefreshToken: process.env.REFRESH_TOKEN,
   },
 });
