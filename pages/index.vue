@@ -84,6 +84,16 @@
             <p class="text-white text-xl font-medium">
               {{ lastPlayed.artist }}
             </p>
+            <p class="text-white text-l">
+              {{ formatDuration(currentTime) }} /
+              {{ formatDuration(lastPlayed.duration) }}
+            </p>
+            <div class="duration w-full h-1 bg-white mt-2">
+              <div
+                class="durationBar h-full bg-green-500"
+                :style="`width: ${progress}%`"
+              ></div>
+            </div>
           </a>
           <a
             :href="topArtist.url"
@@ -189,7 +199,10 @@ export default {
         img: data.image,
         artist: data.artist,
         url: data.url,
+        duration: data.duration,
       };
+      this.currentTime = data.duration;
+      this.progress = 100;
       this.isLastPlayedLoaded = true;
     });
     this.isLoaded = true;
@@ -241,7 +254,7 @@ export default {
       }
     },
     async getCurrentTime() {
-      if (this.isLoaded === true) {
+      if (this.isLoaded === true && this.isPlaying === true) {
         axios.get("/api/now-playing").then((res) => {
           const data = res.data;
           this.currentTime = data.progress;
