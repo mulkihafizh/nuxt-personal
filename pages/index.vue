@@ -55,7 +55,6 @@
             class="wrapSong hover:bg-zinc-800 duration-300 rounded-3xl p-10 relative overflow-hidden"
             v-if="isPlaying === true"
           >
-            <div class="ripple-effect"></div>
             <p class="text-white text-3xl font-bold pb-4 z-10">Now Playing:</p>
             <img :src="song.img" alt="" class="w-60 h-60 z-10 relative" />
             <p class="text-white text-2xl font-bold pt-4">{{ song.name }}</p>
@@ -71,14 +70,21 @@
               ></div>
             </div>
           </a>
-          <div
-            v-else
-            class="flex justify-center items-center text-center bg-zinc-800 rounded-3xl w-3/4"
+          <a
+            :href="lastPlayed.url"
+            target="_blank"
+            v-else-if="isPlaying === false && isLastPlayedLoaded === true"
+            class="hover:bg-zinc-800 duration-300 rounded-3xl p-10 relative overflow-hidden"
           >
-            <p class="text-white text-2xl font-bold pb-4 w-3/4">
-              Currently not playing anything
+            <p class="text-white text-3xl font-bold pb-4 z-10">Last Played:</p>
+            <img :src="lastPlayed.img" alt="" class="w-60 h-60 z-10 relative" />
+            <p class="text-white text-2xl font-bold pt-4">
+              {{ lastPlayed.name }}
             </p>
-          </div>
+            <p class="text-white text-xl font-medium">
+              {{ lastPlayed.artist }}
+            </p>
+          </a>
           <a
             :href="topArtist.url"
             target="_blank"
@@ -126,10 +132,12 @@ export default {
       isPlaying: false,
       currentTime: null,
       progress: 0,
+      lastPlayed: null,
       isTopTrackLoaded: false,
       isUserLoaded: false,
       isTopArtistLoaded: false,
       isNowPlayingLoaded: false,
+      isLastPlayedLoaded: false,
     };
   },
   mounted: function () {
@@ -142,7 +150,7 @@ export default {
       const data = res.data;
       this.song = {
         name: data.name,
-        img: data.albumImageUrl,
+        img: data.image,
         artist: data.artist,
         duration: data.duration,
         url: data.url,
@@ -171,6 +179,16 @@ export default {
       };
       this.isTopTrackLoaded = true;
     });
+    axios.get("/api/last-played").then((res) => {
+      const data = res.data;
+      this.lastPlayed = {
+        name: data.name,
+        img: data.image,
+        artist: data.artist,
+        url: data.url,
+      };
+      this.isLastPlayedLoaded = true;
+    });
     this.isLoaded = true;
     this.startFetching();
   },
@@ -194,6 +212,21 @@ export default {
           };
           this.isPlaying = data.isPlaying;
           this.isNowPlayingLoaded = true;
+        });
+      }
+    },
+    async getLastPlayed() {
+      if (this.isLoaded === true) {
+        axios.get("/api/last-played").then((res) => {
+          const data = res.data;
+          this.lastPlayed = {
+            name: data.name,
+            img: data.image,
+            artist: data.artist,
+            duration: data.duration,
+            url: data.url,
+          };
+          this.isLastPlayedLoaded = true;
         });
       }
     },
