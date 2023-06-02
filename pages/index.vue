@@ -149,7 +149,7 @@ export default {
     axios.get("/api/now-playing").then((res) => {
       const data = res.data;
       this.song = {
-        name: data.name,
+        name: data.title,
         img: data.image,
         artist: data.artist,
         duration: data.duration,
@@ -204,7 +204,7 @@ export default {
         axios.get("/api/now-playing").then((res) => {
           const data = res.data;
           this.song = {
-            name: data.name,
+            name: data.title,
             img: data.albumImageUrl,
             artist: data.artist,
             url: data.url,
