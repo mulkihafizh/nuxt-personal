@@ -1,5 +1,5 @@
 <template>
-  <div id="body" class="bg-zinc-950">
+  <div id="body" class="text-white">
     <div
       id="header"
       class="h-screen grid max-sm:grid-cols-1 grid-cols-2 px-[10%]"
@@ -9,23 +9,21 @@
       >
         <p
           v-if="isLoaded === true && isUserLoaded === true"
-          class="text-6xl max-sm:text-2xl text-white font-bold"
+          class="text-6xl max-sm:text-2xl font-bold"
         >
           Hi, I am {{ user.name }}
         </p>
-        <p
-          class="text-xl max-sm:text-sm text-white font-medium max-w-2xl leading-10"
-        >
+        <p class="text-xl max-sm:text-sm font-medium max-w-2xl leading-10">
           I'm a passionate individual with a diverse range of interests and
           hobbies. <br />
           I enjoy exploring new technologies and building web applications.
         </p>
         <div class="buttonLearn flex">
           <div
-            class="borderNuxt rounded-3xl hover:-translate-y-3 duration-300 shadow hover:shadow-white"
+            class="borderNuxt p-[3px] rounded-3xl hover:-translate-y-3 duration-300 shadow hover:shadow-white"
           >
             <button
-              class="bg-zinc-900 text-white px-12 py-5 text-xl rounded-3xl max-sm:px-6 max-sm:py-3 max-sm:text-base"
+              class="bg-zinc-900 px-12 py-5 text-xl rounded-3xl max-sm:px-6 max-sm:py-3 max-sm:text-base"
             >
               Learn More About Me
             </button>
@@ -67,7 +65,7 @@
             v-if="isPlaying === true"
           >
             <p
-              class="text-white text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
+              class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
             >
               Now Playing :
             </p>
@@ -87,13 +85,13 @@
                 <div class="bar3 animate-visual-bar w-2 bg-gray-800 z-10"></div>
               </div>
             </div>
-            <p class="text-white text-2xl max-sm:text-xl font-bold pt-4">
+            <p class="text-2xl max-sm:text-xl font-bold pt-4">
               {{ song.name }}
             </p>
-            <p class="text-white text-xl max-sm:text-l font-medium">
+            <p class="text-xl max-sm:text-l font-medium">
               {{ song.artist }}
             </p>
-            <p class="text-white text-l">
+            <p class="text-l">
               {{ formatDuration(currentTime) }} /
               {{ formatDuration(song.duration) }}
             </p>
@@ -111,7 +109,7 @@
             class="hover:bg-zinc-800 duration-300 rounded-3xl p-[5%] relative overflow-hidden max-sm:col-span-2 flex flex-col"
           >
             <p
-              class="text-white text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
+              class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
             >
               Last Played :
             </p>
@@ -122,13 +120,13 @@
               alt=""
               class="w-3/4 max-sm:self-center z-10"
             />
-            <p class="text-white text-2xl font-bold pt-4">
+            <p class="text-2xl font-bold pt-4">
               {{ lastPlayed.name }}
             </p>
-            <p class="text-white text-xl font-medium">
+            <p class="text-xl font-medium">
               {{ lastPlayed.artist }}
             </p>
-            <p class="text-white text-l">
+            <p class="text-l">
               {{ formatDuration(currentTime) }} /
               {{ formatDuration(lastPlayed.duration) }}
             </p>
@@ -145,7 +143,7 @@
             class="wrapTopArtist hover:bg-zinc-800 rounded-3xl max-md:order-3 max-sm:order-2 max-md:col-span-2 duration-300 p-[5%] flex flex-col items-center max-sm:items-start max-sm:col-span-1"
           >
             <p
-              class="text-white text-3xl max-lg:text-2xl text-center max-sm:text-start max-sm:text-sm font-bold pb-4"
+              class="text-3xl max-lg:text-2xl text-center max-sm:text-start max-sm:text-sm font-bold pb-4"
             >
               Top Artist This Month
             </p>
@@ -156,12 +154,10 @@
               alt=""
               class="w-3/4 self-center rounded-full"
             />
-            <p class="text-white text-2xl max-sm:text-base font-bold pt-4">
+            <p class="text-2xl max-sm:text-base font-bold pt-4">
               {{ topArtist.name }}
             </p>
-            <p
-              class="text-white text-xl font-medium max-sm:text-base max-sm:text-start"
-            >
+            <p class="text-xl font-medium max-sm:text-base max-sm:text-start">
               {{ topArtist.genre }}
             </p>
           </a>
@@ -171,7 +167,7 @@
             class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 p-[5%] flex flex-col items-end"
           >
             <p
-              class="text-white text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 text-end"
+              class="text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 text-end"
             >
               Top Song This Month
             </p>
@@ -182,10 +178,10 @@
               alt=""
               class="w-3/4"
             />
-            <p class="text-white text-2xl max-sm:text-base font-bold pt-4">
+            <p class="text-2xl max-sm:text-base font-bold pt-4">
               {{ topTrack.name }}
             </p>
-            <p class="text-white text-xl max-sm:text-base font-medium">
+            <p class="text-xl max-sm:text-base font-medium">
               {{ topTrack.artist }}
             </p>
           </a>
