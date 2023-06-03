@@ -8,7 +8,7 @@
         class="headerText flex flex-col justify-center gap-5 max-sm:order-2 max-sm:text-center max-sm:items-center"
       >
         <p
-          v-if="isLoaded === true && isUserLoaded === true"
+          v-if="isUserLoaded === true"
           class="text-6xl max-sm:text-2xl text-white font-bold"
         >
           Hi, I am {{ user.name }}
@@ -36,11 +36,13 @@
         class="headerProfile flex items-center justify-center max-sm:order-1"
       >
         <div class="profileImage">
-          <img
-            v-if="isLoaded === true && isUserLoaded === true"
+          <nuxt-img
+            placeholder
+            v-if="isUserLoaded === true"
             alt="Profile Image"
             class="rounded-full w-full h-full"
             :src="user.img"
+            loading="lazy"
           />
         </div>
       </div>
@@ -70,7 +72,13 @@
               Now Playing :
             </p>
             <div class="imageWrap relative flex max-sm:justify-center">
-              <img :src="song.img" alt="" class="w-3/4" />
+              <nuxt-img
+                placeholder
+                :src="song.img"
+                alt=""
+                class="w-3/4"
+                loading="lazy"
+              />
               <div
                 class="visualizer absolute h-8 w-8 p-2 rounded-lg self-center opacity-60 bg-white left-2 bottom-2 z-10 flex items-end gap-1 max-sm:left-10"
               >
@@ -107,7 +115,9 @@
             >
               Last Played :
             </p>
-            <img
+            <nuxt-img
+              placeholder
+              loading="lazy"
               :src="lastPlayed.img"
               alt=""
               class="w-3/4 max-sm:self-center z-10"
@@ -139,7 +149,9 @@
             >
               Top Artist This Month
             </p>
-            <img
+            <nuxt-img
+              placeholder
+              loading="lazy"
               :src="topArtist.img"
               alt=""
               class="w-3/4 self-center rounded-full"
@@ -163,7 +175,14 @@
             >
               Top Song This Month
             </p>
-            <img :src="topTrack.img" alt="" class="w-3/4" />
+
+            <nuxt-img
+              placeholder
+              :src="topTrack.img"
+              alt=""
+              class="w-3/4"
+              loading="lazy"
+            />
             <p class="text-white text-2xl max-sm:text-base font-bold pt-4">
               {{ topTrack.name }}
             </p>
