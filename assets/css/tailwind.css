@@ -2,10 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
-  @apply bg-zinc-900;
-}
-
 .borderNuxt {
   background: radial-gradient(
         circle at 100% 100%,
