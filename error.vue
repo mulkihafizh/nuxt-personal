@@ -2,7 +2,7 @@ h1
 <template>
   <div
     id="background"
-    class="bg-zinc-950 [&>*]:duration-300 overflow-hidden flex items-center justify-center relative h-screen"
+    class="bg-zinc-950 [&>*]:duration-300 overflow-hidden font-main flex items-center justify-center relative h-screen"
     @mousemove="createCircle"
     @mouseleave="createCircle"
   >
