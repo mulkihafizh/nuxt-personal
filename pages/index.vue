@@ -1,16 +1,15 @@
 <template>
-  <div id="body" class="text-white">
+  <div id="body" class="text-white min-h-screen">
     <div
       id="header"
+      v-if="isLoaded === true && isUserLoaded === true"
       class="h-screen grid max-sm:grid-cols-1 grid-cols-2 px-[10%]"
     >
       <div
+        data-aos="fade-right"
         class="headerText flex flex-col justify-center gap-5 max-sm:order-2 max-sm:text-center max-sm:items-center"
       >
-        <p
-          v-if="isLoaded === true && isUserLoaded === true"
-          class="text-6xl max-sm:text-2xl font-bold"
-        >
+        <p class="text-6xl max-sm:text-2xl font-bold">
           Hi, I am {{ user.name }}
         </p>
         <p class="text-xl max-sm:text-sm font-medium max-w-2xl leading-10">
@@ -297,6 +296,8 @@ export default {
               duration: data.duration,
             };
           }
+          this.currentTime = data.duration;
+          this.progress = 100;
           this.isNowPlayingLoaded = true;
         });
       }
