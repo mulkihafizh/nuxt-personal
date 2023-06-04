@@ -6,7 +6,6 @@
       class="h-screen grid max-sm:grid-cols-1 grid-cols-2 px-[10%]"
     >
       <div
-        data-aos="fade-right"
         class="headerText flex flex-col justify-center gap-5 max-sm:order-2 max-sm:text-center max-sm:items-center"
       >
         <p class="text-6xl max-sm:text-2xl font-bold">
@@ -221,7 +220,6 @@ export default {
     axios.get("/api/now-playing").then((res) => {
       const data = res.data;
       this.isPlaying = data.isPlaying;
-
       if (this.isPlaying == true) {
         this.song = {
           name: data.title,
@@ -263,7 +261,7 @@ export default {
         url: data.url,
         duration: data.duration,
       };
-      this.currentTime = data.duration;
+      this.currentTime = this.lastPlayed.duration;
       this.progress = 100;
       this.isLastPlayedLoaded = true;
     });
@@ -296,8 +294,7 @@ export default {
               duration: data.duration,
             };
           }
-          this.currentTime = data.duration;
-          this.progress = 100;
+
           this.isNowPlayingLoaded = true;
         });
       }
@@ -313,6 +310,8 @@ export default {
             duration: data.duration,
             url: data.url,
           };
+          this.progress = 100;
+          this.currentTime = data.duration;
           this.isLastPlayedLoaded = true;
         });
       }
@@ -323,6 +322,9 @@ export default {
           const data = res.data;
           this.currentTime = data.progress;
         });
+      } else {
+        this.currentTime = this.lastPlayed.duration;
+        this.progress = 100;
       }
     },
     startFetching() {
