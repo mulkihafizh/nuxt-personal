@@ -221,6 +221,7 @@ export default {
       const data = res.data;
       this.isPlaying = data.isPlaying;
       if (this.isPlaying == true) {
+        this.currentTime = data.progress;
         this.song = {
           name: data.title,
           img: data.image,
@@ -229,6 +230,7 @@ export default {
           url: data.url,
         };
       }
+
       this.isNowPlayingLoaded = true;
     });
     axios.get("/api/top-artist").then((res) => {
@@ -254,16 +256,18 @@ export default {
     });
     axios.get("/api/last-played").then((res) => {
       const data = res.data;
-      this.lastPlayed = {
-        name: data.name,
-        img: data.image,
-        artist: data.artist,
-        url: data.url,
-        duration: data.duration,
-      };
-      this.currentTime = this.lastPlayed.duration;
-      this.progress = 100;
-      this.isLastPlayedLoaded = true;
+      if (this.isPlaying == false) {
+        this.lastPlayed = {
+          name: data.name,
+          img: data.image,
+          artist: data.artist,
+          url: data.url,
+          duration: data.duration,
+        };
+        this.currentTime = data.duration;
+        this.progress = 100;
+        this.isLastPlayedLoaded = true;
+      }
     });
     this.isLoaded = true;
     this.startFetching();
@@ -293,6 +297,7 @@ export default {
               url: data.url,
               duration: data.duration,
             };
+            this.currentTime = data.progress;
           }
 
           this.isNowPlayingLoaded = true;
@@ -300,40 +305,32 @@ export default {
       }
     },
     async getLastPlayed() {
-      if (this.isLoaded === true) {
+      if (this.isLoaded === true && this.isPlaying === false) {
         axios.get("/api/last-played").then((res) => {
           const data = res.data;
-          this.lastPlayed = {
-            name: data.name,
-            img: data.image,
-            artist: data.artist,
-            duration: data.duration,
-            url: data.url,
-          };
-          this.progress = 100;
-          this.currentTime = data.duration;
-          this.isLastPlayedLoaded = true;
+          if (this.isPlaying == false) {
+            this.lastPlayed = {
+              name: data.name,
+              img: data.image,
+              artist: data.artist,
+              url: data.url,
+              duration: data.duration,
+            };
+            this.currentTime = data.duration;
+            this.progress = 100;
+            this.isLastPlayedLoaded = true;
+          }
         });
       }
     },
-    async getCurrentTime() {
-      if (this.isLoaded === true && this.isPlaying === true) {
-        axios.get("/api/now-playing").then((res) => {
-          const data = res.data;
-          this.currentTime = data.progress;
-        });
-      } else {
-        this.currentTime = this.lastPlayed.duration;
-        this.progress = 100;
-      }
-    },
+
     startFetching() {
       this.loading = true;
       this.getNowPlaying();
       this.intervalId = setInterval(() => {
         this.getNowPlaying();
-        this.getCurrentTime();
         this.songProgress();
+        this.getLastPlayed();
       }, 1000);
     },
     formatDuration(duration) {
