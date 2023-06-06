@@ -49,7 +49,8 @@
       </div>
     </div>
     <div class="nowPlaying px-[10%]">
-      <p class="text-bold text-4xl">Music Profile</p>
+      <p class="text-bold text-4xl max-sm:text-3xl pb-5">Music Profile</p>
+      <question />
       <div
         v-if="
           isLoaded === true &&
@@ -60,12 +61,12 @@
         class="py-5"
       >
         <div
-          class="wrapSpotify p-[5%] rounded-3xl grid grid-cols-3 gap-5 max-md:grid-cols-2"
+          class="wrapSpotify rounded-3xl grid gap-5 grid-cols-3 max-md:grid-cols-2"
         >
           <a
             :href="song.url"
             target="_blank"
-            class="wrapSong hover:bg-zinc-800 flex flex-col duration-300 rounded-3xl p-[5%] relative overflow-hidden max-sm:col-span-2"
+            class="wrapSong hover:bg-zinc-800 col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
             v-if="isPlaying === true"
           >
             <p
@@ -73,122 +74,143 @@
             >
               Now Playing :
             </p>
-            <div class="imageWrap relative flex max-sm:justify-center">
-              <nuxt-img
-                placeholder
-                loading="lazy"
-                :src="song.img"
-                alt=""
-                class="w-3/4"
-              />
-              <div
-                class="visualizer absolute h-8 w-8 p-2 rounded-lg self-center opacity-60 bg-white left-2 bottom-2 z-10 flex items-end gap-1 max-sm:left-10"
-              >
-                <div class="bar1 animate-visual-bar w-2 bg-gray-800 z-10"></div>
-                <div class="bar2 animate-visual-bar w-2 bg-gray-800 z-10"></div>
-                <div class="bar3 animate-visual-bar w-2 bg-gray-800 z-10"></div>
+            <div
+              class="nowPlayingWrap grid grid-cols-2 max-sm:justify-center gap-4 max-sm:grid-cols-1"
+            >
+              <div class="wrapImage relative">
+                <nuxt-img placeholder loading="lazy" :src="song.img" alt="" />
+
+                <div
+                  class="visualizer absolute h-8 w-8 p-2 rounded-lg self-center opacity-60 bg-white left-2 bottom-2 z-10 flex items-end gap-1 max-sm:left-4"
+                >
+                  <div
+                    class="bar1 animate-visual-bar w-2 bg-gray-800 z-10"
+                  ></div>
+                  <div
+                    class="bar2 animate-visual-bar w-2 bg-gray-800 z-10"
+                  ></div>
+                  <div
+                    class="bar3 animate-visual-bar w-2 bg-gray-800 z-10"
+                  ></div>
+                </div>
               </div>
-            </div>
-            <p class="text-2xl max-sm:text-xl font-bold pt-4">
-              {{ song.name }}
-            </p>
-            <p class="text-xl max-sm:text-l font-medium">
-              {{ song.artist }}
-            </p>
-            <p class="text-l">
-              {{ formatDuration(currentTime) }} /
-              {{ formatDuration(song.duration) }}
-            </p>
-            <div class="duration w-full h-1 bg-white mt-2">
-              <div
-                class="durationBar h-full bg-green-500"
-                :style="`width: ${progress}%`"
-              ></div>
+
+              <div class="songInfo flex flex-col justify-end">
+                <p class="text-2xl max-sm:text-xl font-bold pt-4">
+                  {{ song.name }}
+                </p>
+                <p class="text-xl max-sm:text-l font-medium">
+                  {{ song.artist }}
+                </p>
+                <p class="text-l">
+                  {{ formatDuration(currentTime) }} /
+                  {{ formatDuration(song.duration) }}
+                </p>
+                <div class="duration w-full h-1 bg-white mt-2">
+                  <div
+                    class="durationBar h-full bg-green-500"
+                    :style="`width: ${progress}%`"
+                  ></div>
+                </div>
+              </div>
             </div>
           </a>
           <a
             :href="lastPlayed.url"
             target="_blank"
-            v-else-if="isPlaying === false && isLastPlayedLoaded === true"
-            class="hover:bg-zinc-800 duration-300 rounded-3xl p-[5%] relative overflow-hidden max-sm:col-span-2 flex flex-col"
+            class="wrapSong hover:bg-zinc-800 col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
+            v-if="isPlaying === false"
           >
             <p
               class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
             >
-              Last Played :
+              Now Playing :
             </p>
-            <nuxt-img
-              placeholder
-              loading="lazy"
-              :src="lastPlayed.img"
-              alt=""
-              class="w-3/4 max-sm:self-center z-10"
-            />
-            <p class="text-2xl font-bold pt-4">
-              {{ lastPlayed.name }}
-            </p>
-            <p class="text-xl font-medium">
-              {{ lastPlayed.artist }}
-            </p>
-            <p class="text-l">
-              {{ formatDuration(currentTime) }} /
-              {{ formatDuration(lastPlayed.duration) }}
-            </p>
-            <div class="duration w-full h-1 bg-white mt-2">
-              <div
-                class="durationBar h-full bg-green-500"
-                :style="`width: ${progress}%`"
-              ></div>
+            <div
+              class="nowPlayingWrap grid grid-cols-2 max-sm:justify-center gap-4 max-sm:grid-cols-1"
+            >
+              <div class="wrapImage relative">
+                <nuxt-img
+                  placeholder
+                  loading="lazy"
+                  :src="lastPlayed.img"
+                  alt=""
+                />
+              </div>
+
+              <div class="songInfo flex flex-col justify-end">
+                <p class="text-2xl max-sm:text-xl font-bold pt-4">
+                  {{ lastPlayed.name }}
+                </p>
+                <p class="text-xl max-sm:text-l font-medium">
+                  {{ lastPlayed.artist }}
+                </p>
+                <p class="text-l">
+                  {{ formatDuration(currentTime) }} /
+                  {{ formatDuration(lastPlayed.duration) }}
+                </p>
+                <div class="duration w-full h-1 bg-white mt-2">
+                  <div
+                    class="durationBar h-full bg-green-500"
+                    :style="`width: ${progress}%`"
+                  ></div>
+                </div>
+              </div>
             </div>
           </a>
-          <a
-            :href="topArtist.url"
-            target="_blank"
-            class="wrapTopArtist hover:bg-zinc-800 rounded-3xl max-md:order-3 max-sm:order-2 max-md:col-span-2 duration-300 p-[5%] flex flex-col items-center max-sm:items-start max-sm:col-span-1"
+
+          <div
+            class="wrapTops grid max-md:grid-cols-2 max-lg:grid-rows-2 max-md:col-span-2"
           >
-            <p
-              class="text-3xl max-lg:text-2xl text-center max-sm:text-start max-sm:text-sm font-bold pb-4"
+            <a
+              :href="topArtist.url"
+              target="_blank"
+              class="wrapTopArtist hover:bg-zinc-800 rounded-3xl duration-300 p-[5%] flex flex-col items-center max-sm:col-span-1"
             >
-              Top Artist This Month
-            </p>
-            <nuxt-img
-              placeholder
-              loading="lazy"
-              :src="topArtist.img"
-              alt=""
-              class="w-3/4 self-center rounded-full"
-            />
-            <p class="text-2xl max-sm:text-base font-bold pt-4">
-              {{ topArtist.name }}
-            </p>
-            <p class="text-xl font-medium max-sm:text-base max-sm:text-start">
-              {{ topArtist.genre }}
-            </p>
-          </a>
-          <a
-            :href="topTrack.url"
-            target="_blank"
-            class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 p-[5%] flex flex-col items-end"
-          >
-            <p
-              class="text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 text-end"
+              <p
+                class="text-3xl max-lg:text-2xl text-center max-sm:text-sm font-bold pb-4"
+              >
+                Top Artist This Month
+              </p>
+              <nuxt-img
+                placeholder
+                loading="lazy"
+                :src="topArtist.img"
+                alt=""
+                class="w-1/2 self-center rounded-full"
+              />
+              <p class="text-2xl max-sm:text-base font-bold pt-4">
+                {{ topArtist.name }}
+              </p>
+              <p class="text-xl font-medium max-sm:text-base">
+                {{ topArtist.genre }}
+              </p>
+            </a>
+            <a
+              :href="topTrack.url"
+              target="_blank"
+              class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 p-[5%] flex flex-col items-center"
             >
-              Top Song This Month
-            </p>
-            <nuxt-img
-              placeholder
-              loading="lazy"
-              :src="topTrack.img"
-              alt=""
-              class="w-3/4"
-            />
-            <p class="text-2xl max-sm:text-base font-bold pt-4">
-              {{ topTrack.name }}
-            </p>
-            <p class="text-xl max-sm:text-base font-medium">
-              {{ topTrack.artist }}
-            </p>
-          </a>
+              <p
+                class="text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 text-center"
+              >
+                Top Song This Month
+              </p>
+              <nuxt-img
+                placeholder
+                loading="lazy"
+                :src="topTrack.img"
+                alt=""
+                class="w-1/2"
+              />
+              <p class="text-2xl max-sm:text-base font-bold pt-4">
+                {{ topTrack.name }}
+              </p>
+              <p class="text-xl max-sm:text-base font-medium">
+                {{ topTrack.artist }}
+              </p>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -218,67 +240,22 @@ export default {
     };
   },
   mounted: function () {
-    axios.get("/api/me").then((res) => {
-      const data = res.data;
-      this.user = { name: data.name, img: data.image, url: data.url };
-      this.isUserLoaded = true;
-    });
-    axios.get("/api/now-playing").then((res) => {
-      const data = res.data;
-      this.isPlaying = data.isPlaying;
-      if (this.isPlaying == true) {
-        this.currentTime = data.progress;
-        this.song = {
-          name: data.title,
-          img: data.image,
-          artist: data.artist,
-          duration: data.duration,
-          url: data.url,
-        };
-      }
-
-      this.isNowPlayingLoaded = true;
-    });
-    axios.get("/api/top-artist").then((res) => {
-      const data = res.data;
-      this.topArtist = {
-        name: data.name,
-        img: data.image,
-        genre: data.genre,
-        url: data.url,
-      };
-      this.isTopArtistLoaded = true;
-    });
-    axios.get("/api/tracks").then((res) => {
-      const data = res.data;
-      this.topTrack = {
-        name: data.name,
-        img: data.image,
-        artist: data.artist,
-        duration: data.duration,
-        url: data.url,
-      };
-      this.isTopTrackLoaded = true;
-    });
-    axios.get("/api/last-played").then((res) => {
-      const data = res.data;
-      if (this.isPlaying == false) {
-        this.lastPlayed = {
-          name: data.name,
-          img: data.image,
-          artist: data.artist,
-          url: data.url,
-          duration: data.duration,
-        };
-        this.currentTime = data.duration;
-        this.progress = 100;
-        this.isLastPlayedLoaded = true;
-      }
-    });
+    this.getMe();
+    this.getTopArtists();
+    this.getNowPlaying();
+    this.getTopTrack();
+    this.getLastPlayed();
     this.isLoaded = true;
     this.startFetching();
   },
   methods: {
+    async getMe() {
+      axios.get("/api/me").then((res) => {
+        const data = res.data;
+        this.user = { name: data.name, img: data.image, url: data.url };
+        this.isUserLoaded = true;
+      });
+    },
     songProgress() {
       if (
         this.isLoaded === true &&
@@ -290,25 +267,36 @@ export default {
       }
     },
     async getNowPlaying() {
-      if (this.isLoaded === true) {
-        axios.get("/api/now-playing").then((res) => {
-          const data = res.data;
-          this.isPlaying = data.isPlaying;
+      axios.get("/api/now-playing").then((res) => {
+        const data = res.data;
+        this.isPlaying = data.isPlaying;
 
-          if (this.isPlaying == true) {
-            this.song = {
-              name: data.title,
-              img: data.albumImageUrl,
-              artist: data.artist,
-              url: data.url,
-              duration: data.duration,
-            };
-            this.currentTime = data.progress;
-          }
+        if (this.isPlaying == true) {
+          this.song = {
+            name: data.title,
+            img: data.albumImageUrl,
+            artist: data.artist,
+            url: data.url,
+            duration: data.duration,
+          };
+          this.currentTime = data.progress;
+        }
 
-          this.isNowPlayingLoaded = true;
-        });
-      }
+        this.isNowPlayingLoaded = true;
+      });
+    },
+
+    async getTopArtists() {
+      axios.get("/api/top-artist").then((res) => {
+        const data = res.data;
+        this.topArtist = {
+          name: data.name,
+          img: data.image,
+          genre: data.genre,
+          url: data.url,
+        };
+        this.isTopArtistLoaded = true;
+      });
     },
     async getLastPlayed() {
       if (this.isLoaded === true && this.isPlaying === false) {
@@ -329,7 +317,19 @@ export default {
         });
       }
     },
-
+    async getTopTrack() {
+      axios.get("/api/tracks").then((res) => {
+        const data = res.data;
+        this.topTrack = {
+          name: data.name,
+          img: data.image,
+          artist: data.artist,
+          duration: data.duration,
+          url: data.url,
+        };
+        this.isTopTrackLoaded = true;
+      });
+    },
     startFetching() {
       this.loading = true;
       this.getNowPlaying();

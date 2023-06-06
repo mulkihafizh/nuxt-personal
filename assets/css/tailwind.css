@@ -47,3 +47,28 @@
 .bar3 {
   animation-delay: 0.2s;
 }
+
+.router-link-active,
+.router-link-exact-active {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-zinc-950;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(168, 168, 168);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

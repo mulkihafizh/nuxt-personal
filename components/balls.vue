@@ -1,7 +1,7 @@
 <template>
   <div class="ball-background">
     <div
-      class="text-2xl text-white right-0 flex justify-end p-3 absolute items-center gap-2"
+      class="text-2xl text-white right-0 flex bottom-0 justify-end p-3 absolute items-center gap-2"
     >
       <p
         class="text-base duration-300 removeText opacity-0"
