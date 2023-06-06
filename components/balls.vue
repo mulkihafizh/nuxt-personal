@@ -1,5 +1,5 @@
 <template>
-  <div class="ball-background">
+  <div class="ball-background absolute w-full h-screen overflow-hidden">
     <div
       class="text-2xl text-white right-0 flex bottom-0 justify-end p-3 absolute items-center gap-2"
     >
@@ -21,7 +21,7 @@
     <div
       v-for="ball in balls"
       :key="ball.id"
-      class="ball"
+      class="ball rounded-full absolute cursor-pointer"
       :style="{
         left: ball.x + 'px',
         top: ball.y + 'px',
@@ -128,17 +128,7 @@ export default {
 </script>
 
 <style scoped>
-.ball-background {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
 .ball {
-  position: absolute;
-  border-radius: 50%;
-  cursor: pointer;
   transition: transform 0.3s ease-in-out;
   background-color: rgb(107, 255, 179);
   box-shadow: #00dc82 0px 0px 10px 2px;
