@@ -54,7 +54,7 @@
         </div>
       </div>
     </div>
-    <div class="nowPlaying px-[10%]">
+    <div class="nowPlaying px-[10%]" v-if="isUserLoaded === true">
       <p class="text-bold text-4xl max-sm:text-3xl pb-5">Music Profile</p>
       <question />
       <div
