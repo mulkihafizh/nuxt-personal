@@ -52,7 +52,7 @@ export default {
     },
     createBall() {
       if (this.balls.length >= this.maxBalls) {
-        this.balls.shift(); // Remove the oldest ball
+        this.balls.shift();
       }
       const newBall = {
         id: this.nextBallId++,
@@ -64,7 +64,6 @@ export default {
         lifespan: 0,
       };
 
-      // Ensure the ball's initial position is within the screen boundaries
       newBall.x = Math.max(newBall.x, 0);
       newBall.x = Math.min(newBall.x, window.innerWidth - newBall.size);
       newBall.y = Math.max(newBall.y, 0);
@@ -92,7 +91,6 @@ export default {
             }
           }
 
-          // Ensure the ball stays within the screen boundaries
           ball.x = Math.max(ball.x, 0);
           ball.x = Math.min(ball.x, window.innerWidth - ball.size);
           ball.y = Math.max(ball.y, 0);
@@ -104,7 +102,7 @@ export default {
       const ballIndex = this.balls.findIndex((b) => b.id === ball.id);
       if (ballIndex !== -1) {
         if (this.balls.length >= this.maxBalls) {
-          return; // Stop splitting if the maximum number of balls is reached
+          return;
         }
 
         const newBalls = [];
