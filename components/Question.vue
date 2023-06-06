@@ -41,7 +41,8 @@
         bonIver.name
       }}</a>
     </p>
-    <div class="options grid grid-rows-4 gap-2 text-lg pt-4">
+    <p class="py-4">Guess One :</p>
+    <div class="options grid grid-rows-4 gap-2 text-lg">
       <div class="flex gap-5 max-sm:gap-2 items-center max-sm:flex-col">
         <button
           @click="guess()"
