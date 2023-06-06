@@ -42,7 +42,7 @@
             v-if="isLoaded === true && isUserLoaded === true"
             alt="Profile Image"
             class="rounded-full w-full h-full"
-            :src="user.img"
+            :src="user.image"
           />
         </div>
       </div>
@@ -50,25 +50,25 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-
 export default {
   name: "Index",
   data() {
     return {
       isLoaded: false,
       user: null,
-
       isUserLoaded: false,
     };
   },
-  mounted: function () {
-    axios.get("/api/me").then((res) => {
-      const data = res.data;
-      this.user = { name: data.name, img: data.image, url: data.url };
+  methods: {
+    async getUser() {
+      const user = await $fetch("/api/me");
+      this.user = user;
       this.isUserLoaded = true;
       this.isLoaded = true;
-    });
+    },
+  },
+  mounted() {
+    this.getUser();
   },
 };
 </script>

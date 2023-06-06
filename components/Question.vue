@@ -29,9 +29,17 @@
       I usually and mostly listen to indie folk music, especially when I'm
       studying or working. I also into some other genres like J Pop. <br />
       My favorite indie folk artists are
-      <span class="bg-zinc-800 px-1">Novo Amor</span>,
-      <span class="bg-zinc-800 px-1">Hollow Coves</span> and
-      <span class="bg-zinc-800 px-1">Bon Iver</span>
+      <a target="_blank" :href="novoAmor.url" class="bg-zinc-800 px-1">{{
+        novoAmor.name
+      }}</a
+      >,
+      <a target="_blank" :href="hollowCoves.url" class="bg-zinc-800 px-1">{{
+        hollowCoves.name
+      }}</a>
+      and
+      <a target="_blank" :href="bonIver.url" class="bg-zinc-800 px-1">{{
+        bonIver.name
+      }}</a>
     </p>
     <div class="options grid grid-rows-4 gap-2 text-lg pt-4">
       <div class="flex gap-5 max-sm:gap-2 items-center max-sm:flex-col">
@@ -115,6 +123,9 @@ export default {
   data() {
     return {
       guessed: false,
+      bonIver: {},
+      novoAmor: {},
+      hollowCoves: {},
     };
   },
   methods: {
@@ -123,8 +134,17 @@ export default {
         this.guessed = true;
       }
     },
+    async getArtists() {
+      const bonIver = await $fetch("/api/artist/4LEiUm1SRbFMgfqnQTwUbQ");
+      const novoAmor = await $fetch("/api/artist/0rZp7G3gIH6WkyeXbrZnGi");
+      const hollowCoves = await $fetch("/api/artist/7IAFAOtc9kTYNTizhLSWM6");
+      this.bonIver = bonIver;
+      this.novoAmor = novoAmor;
+      this.hollowCoves = hollowCoves;
+    },
+  },
+  mounted() {
+    this.getArtists();
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

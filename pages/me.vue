@@ -15,7 +15,7 @@
             v-if="isLoaded === true && isUserLoaded === true"
             alt="Profile Image"
             class="rounded-full h-3/4"
-            :src="user.img"
+            :src="user.image"
           />
         </div>
         <div class="descText">
@@ -130,7 +130,7 @@
             <p
               class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
             >
-              Now Playing :
+              Last Played :
             </p>
             <div
               class="nowPlayingWrap grid grid-cols-2 max-sm:justify-center gap-4 max-sm:grid-cols-1"
@@ -223,8 +223,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-
 export default {
   name: "Index",
   data() {
@@ -256,11 +254,9 @@ export default {
   },
   methods: {
     async getMe() {
-      axios.get("/api/me").then((res) => {
-        const data = res.data;
-        this.user = { name: data.name, img: data.image, url: data.url };
-        this.isUserLoaded = true;
-      });
+      const data = await $fetch("/api/me");
+      this.user = data;
+      this.isUserLoaded = true;
     },
     songProgress() {
       if (
@@ -273,68 +269,60 @@ export default {
       }
     },
     async getNowPlaying() {
-      axios.get("/api/now-playing").then((res) => {
-        const data = res.data;
-        this.isPlaying = data.isPlaying;
+      const data = await $fetch("/api/now-playing");
+      this.isPlaying = data.isPlaying;
 
-        if (this.isPlaying == true) {
-          this.song = {
-            name: data.title,
-            img: data.albumImageUrl,
+      if (this.isPlaying == true) {
+        this.song = {
+          name: data.title,
+          img: data.albumImageUrl,
+          artist: data.artist,
+          url: data.url,
+          duration: data.duration,
+        };
+        this.currentTime = data.progress;
+      }
+
+      this.isNowPlayingLoaded = true;
+    },
+
+    async getTopArtists() {
+      const data = await $fetch("/api/top-artist");
+      this.topArtist = {
+        name: data.name,
+        img: data.image,
+        genre: data.genre,
+        url: data.url,
+      };
+      this.isTopArtistLoaded = true;
+    },
+    async getLastPlayed() {
+      if (this.isLoaded === true && this.isPlaying === false) {
+        const data = await $fetch("/api/last-played");
+        if (this.isPlaying == false) {
+          this.lastPlayed = {
+            name: data.name,
+            img: data.image,
             artist: data.artist,
             url: data.url,
             duration: data.duration,
           };
-          this.currentTime = data.progress;
+          this.currentTime = data.duration;
+          this.progress = 100;
+          this.isLastPlayedLoaded = true;
         }
-
-        this.isNowPlayingLoaded = true;
-      });
-    },
-
-    async getTopArtists() {
-      axios.get("/api/top-artist").then((res) => {
-        const data = res.data;
-        this.topArtist = {
-          name: data.name,
-          img: data.image,
-          genre: data.genre,
-          url: data.url,
-        };
-        this.isTopArtistLoaded = true;
-      });
-    },
-    async getLastPlayed() {
-      if (this.isLoaded === true && this.isPlaying === false) {
-        axios.get("/api/last-played").then((res) => {
-          const data = res.data;
-          if (this.isPlaying == false) {
-            this.lastPlayed = {
-              name: data.name,
-              img: data.image,
-              artist: data.artist,
-              url: data.url,
-              duration: data.duration,
-            };
-            this.currentTime = data.duration;
-            this.progress = 100;
-            this.isLastPlayedLoaded = true;
-          }
-        });
       }
     },
     async getTopTrack() {
-      axios.get("/api/tracks").then((res) => {
-        const data = res.data;
-        this.topTrack = {
-          name: data.name,
-          img: data.image,
-          artist: data.artist,
-          duration: data.duration,
-          url: data.url,
-        };
-        this.isTopTrackLoaded = true;
-      });
+      const data = await $fetch("/api/tracks");
+      this.topTrack = {
+        name: data.name,
+        img: data.image,
+        artist: data.artist,
+        duration: data.duration,
+        url: data.url,
+      };
+      this.isTopTrackLoaded = true;
     },
     startFetching() {
       this.loading = true;
