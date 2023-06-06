@@ -125,7 +125,7 @@
             :href="lastPlayed.url"
             target="_blank"
             class="wrapSong hover:bg-zinc-800 col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
-            v-if="isPlaying === false"
+            v-if="isPlaying === false && isLastPlayedLoaded === true"
           >
             <p
               class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
@@ -245,10 +245,10 @@ export default {
   },
   mounted: function () {
     this.getMe();
-    this.getTopArtists();
     this.getNowPlaying();
-    this.getTopTrack();
     this.getLastPlayed();
+    this.getTopArtists();
+    this.getTopTrack();
     this.isLoaded = true;
     this.startFetching();
   },
@@ -271,7 +271,6 @@ export default {
     async getNowPlaying() {
       const data = await $fetch("/api/now-playing");
       this.isPlaying = data.isPlaying;
-
       if (this.isPlaying == true) {
         this.song = {
           name: data.title,
@@ -299,18 +298,16 @@ export default {
     async getLastPlayed() {
       if (this.isLoaded === true && this.isPlaying === false) {
         const data = await $fetch("/api/last-played");
-        if (this.isPlaying == false) {
-          this.lastPlayed = {
-            name: data.name,
-            img: data.image,
-            artist: data.artist,
-            url: data.url,
-            duration: data.duration,
-          };
-          this.currentTime = data.duration;
-          this.progress = 100;
-          this.isLastPlayedLoaded = true;
-        }
+        this.lastPlayed = {
+          name: data.name,
+          img: data.image,
+          artist: data.artist,
+          url: data.url,
+          duration: data.duration,
+        };
+        this.currentTime = data.duration;
+        this.progress = 100;
+        this.isLastPlayedLoaded = true;
       }
     },
     async getTopTrack() {
