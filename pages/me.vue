@@ -166,7 +166,7 @@
           </a>
 
           <div
-            class="wrapTops grid max-md:grid-cols-2 max-lg:grid-rows-2 max-md:col-span-2"
+            class="wrapTops grid max-md:grid-cols-2 max-lg:grid-rows-2 max-md:col-span-2 gap-3"
           >
             <a
               :href="topArtist.url"
