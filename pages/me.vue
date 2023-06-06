@@ -33,15 +33,21 @@
       >
         <p class="text-4xl font-bold max-sm:text-2xl">Favorite Technologies</p>
         <div class="grid grid-cols-3 gap-4">
-          <div class="techItem flex flex-col gap-2 items-center">
+          <div
+            class="techItem flex flex-col gap-2 items-center justify-between"
+          >
             <nuxt-img class="w-3/4" src="/images/js.png" />
             <p class="text-2xl max-sm:text-lg text-center">Javascript</p>
           </div>
-          <div class="techItem flex flex-col gap-2 items-center">
+          <div
+            class="techItem flex flex-col gap-2 items-center justify-between"
+          >
             <nuxt-img class="w-3/4" src="/images/vue.png" />
             <p class="text-2xl max-sm:text-lg text-center">Vue.js</p>
           </div>
-          <div class="techItem flex flex-col gap-2 items-center">
+          <div
+            class="techItem flex flex-col gap-2 items-center justify-between"
+          >
             <nuxt-img class="w-3/4" src="/images/react.png" />
             <p class="text-2xl max-sm:text-lg text-center">React.js</p>
           </div>
