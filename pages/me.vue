@@ -72,7 +72,7 @@
           <a
             :href="song.url"
             target="_blank"
-            class="wrapSong hover:bg-zinc-800 col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
+            class="wrapSong col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
             v-if="isPlaying === true"
           >
             <p
@@ -124,7 +124,7 @@
           <a
             :href="lastPlayed.url"
             target="_blank"
-            class="wrapSong hover:bg-zinc-800 col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
+            class="wrapSong col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
             v-if="isPlaying === false && isLastPlayedLoaded === true"
           >
             <p
@@ -296,7 +296,7 @@ export default {
       this.isTopArtistLoaded = true;
     },
     async getLastPlayed() {
-      if (this.isLoaded === true && this.isPlaying === false) {
+      if (this.isPlaying === false) {
         const data = await $fetch("/api/last-played");
         this.lastPlayed = {
           name: data.name,
