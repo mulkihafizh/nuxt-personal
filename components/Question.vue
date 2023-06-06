@@ -12,7 +12,7 @@
       <span
         class="duration-1000"
         v-bind:class="{
-          'opacity-1 bg-zinc-700 px-1': guessed === true,
+          'opacity-1 bg-zinc-800 px-1': guessed === true,
           'opacity-0 ': guessed === false,
         }"
       >
