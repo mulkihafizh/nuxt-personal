@@ -3,10 +3,7 @@ import { getNowPlaying, getLastPlayed } from "../../lib/spotify";
 export default eventHandler(async () => {
   const response = await getNowPlaying();
 
-  const song = await response.json();
-  const isPlaying = song.is_playing;
-
-  if (!isPlaying) {
+  if (response.status === 204 || response.status > 400) {
     const lastPlayedResponse = await getLastPlayed();
     const lastPlayed = await lastPlayedResponse.json();
     const track = lastPlayed.items[0].track;
@@ -15,6 +12,7 @@ export default eventHandler(async () => {
     const url = track.external_urls.spotify;
     const artist = track.artists[0].name;
     const duration = track.duration_ms;
+    const isPlaying = false;
 
     return {
       isPlaying,
@@ -25,7 +23,8 @@ export default eventHandler(async () => {
       duration,
     };
   }
-
+  const song = await response.json();
+  const isPlaying = song.is_playing;
   const title = song.item.name;
   const artist = song.item.artists
     .map((_artist: any) => _artist.name)
