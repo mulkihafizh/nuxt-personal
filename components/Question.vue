@@ -76,7 +76,7 @@
             'opacity-0 pointer-events-none': guessed === false,
           }"
         >
-          Indeed it is. I listen to Indie Folk most of the time.
+          Yes it is. I listen to Indie Folk most of the time.
         </p>
       </div>
       <div class="flex gap-5 max-sm:gap-2 items-center max-sm:flex-col">
@@ -112,7 +112,7 @@
             'opacity-0 pointer-events-none': guessed === false,
           }"
         >
-          Its just doesn't suit my taste.
+          No its just doesn't suit my taste.
         </p>
       </div>
     </div>
