@@ -9,7 +9,7 @@
         class="headerProfile flex flex-col justify-center max-sm:order-1 h-full"
       >
         <div class="profileImage flex items-center gap-5">
-          <img
+          <nuxt-img
             placeholder
             loading="lazy"
             v-if="isLoaded === true && isUserLoaded === true"
@@ -122,10 +122,10 @@
             </div>
           </a>
           <a
-            :href="lastPlayed.url"
+            :href="song.url"
             target="_blank"
             class="wrapSong col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
-            v-if="isPlaying === false && isLastPlayedLoaded === true"
+            v-if="isPlaying === false"
           >
             <p
               class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
@@ -136,24 +136,19 @@
               class="nowPlayingWrap grid grid-cols-2 max-sm:justify-center gap-4 max-sm:grid-cols-1"
             >
               <div class="wrapImage relative">
-                <nuxt-img
-                  placeholder
-                  loading="lazy"
-                  :src="lastPlayed.img"
-                  alt=""
-                />
+                <nuxt-img placeholder loading="lazy" :src="song.img" alt="" />
               </div>
 
               <div class="songInfo flex flex-col justify-end">
                 <p class="text-2xl max-sm:text-xl font-bold pt-4">
-                  {{ lastPlayed.name }}
+                  {{ song.name }}
                 </p>
                 <p class="text-xl max-sm:text-l font-medium">
-                  {{ lastPlayed.artist }}
+                  {{ song.artist }}
                 </p>
                 <p class="text-l">
                   {{ formatDuration(currentTime) }} /
-                  {{ formatDuration(lastPlayed.duration) }}
+                  {{ formatDuration(song.duration) }}
                 </p>
                 <div class="duration w-full h-1 bg-white mt-2">
                   <div
@@ -235,18 +230,15 @@ export default {
       isPlaying: false,
       currentTime: null,
       progress: 0,
-      lastPlayed: null,
       isTopTrackLoaded: false,
       isUserLoaded: false,
       isTopArtistLoaded: false,
       isNowPlayingLoaded: false,
-      isLastPlayedLoaded: false,
     };
   },
   mounted: function () {
     this.getMe();
     this.getNowPlaying();
-    this.getLastPlayed();
     this.getTopArtists();
     this.getTopTrack();
     this.isLoaded = true;
@@ -270,16 +262,19 @@ export default {
     },
     async getNowPlaying() {
       const data = await $fetch("/api/now-playing");
+      this.song = {
+        name: data.title,
+        img: data.image,
+        artist: data.artist,
+        url: data.url,
+        duration: data.duration,
+      };
       this.isPlaying = data.isPlaying;
-      if (this.isPlaying == true) {
-        this.song = {
-          name: data.title,
-          img: data.albumImageUrl,
-          artist: data.artist,
-          url: data.url,
-          duration: data.duration,
-        };
+      if (this.isPlaying === true) {
         this.currentTime = data.progress;
+      } else {
+        this.currentTime = data.duration;
+        this.progress = 100;
       }
 
       this.isNowPlayingLoaded = true;
@@ -294,21 +289,6 @@ export default {
         url: data.url,
       };
       this.isTopArtistLoaded = true;
-    },
-    async getLastPlayed() {
-      if (this.isPlaying === false) {
-        const data = await $fetch("/api/last-played");
-        this.lastPlayed = {
-          name: data.name,
-          img: data.image,
-          artist: data.artist,
-          url: data.url,
-          duration: data.duration,
-        };
-        this.currentTime = data.duration;
-        this.progress = 100;
-        this.isLastPlayedLoaded = true;
-      }
     },
     async getTopTrack() {
       const data = await $fetch("/api/tracks");
@@ -327,7 +307,6 @@ export default {
       this.intervalId = setInterval(() => {
         this.getNowPlaying();
         this.songProgress();
-        this.getLastPlayed();
       }, 1000);
     },
     formatDuration(duration) {
