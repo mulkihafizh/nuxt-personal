@@ -73,7 +73,7 @@
             :href="song.url"
             target="_blank"
             class="wrapSong col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
-            v-if="isPlaying === true"
+            v-if="isPlaying === true && isNowPlayingLoaded === true"
           >
             <p
               class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
@@ -125,7 +125,7 @@
             :href="song.url"
             target="_blank"
             class="wrapSong col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
-            v-if="isPlaying === false"
+            v-if="isPlaying === false && isNowPlayingLoaded === true"
           >
             <p
               class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"

@@ -2,11 +2,6 @@ import { getNowPlaying, getLastPlayed } from "../../lib/spotify";
 
 export default eventHandler(async () => {
   const response = await getNowPlaying();
-  if (response.status == 204 || response.status > 400) {
-    return {
-      isPlaying: false,
-    };
-  }
 
   const song = await response.json();
   const isPlaying = song.is_playing;
