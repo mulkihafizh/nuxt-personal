@@ -112,7 +112,7 @@
             'opacity-0 pointer-events-none': guessed === false,
           }"
         >
-          No its just doesn't suit my taste.
+          No. Its just doesn't suit my taste. J Rock is an exception.
         </p>
       </div>
     </div>
