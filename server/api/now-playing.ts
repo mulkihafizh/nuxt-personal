@@ -15,7 +15,7 @@ export default eventHandler(async () => {
     const lastPlayedResponse = await getLastPlayed();
     const lastPlayed = await lastPlayedResponse.json();
     const track = lastPlayed.items[0].track;
-    const name = track.name;
+    const title = track.name;
     const image = track.album.images[0].url;
     const url = track.external_urls.spotify;
     const artist = track.artists[0].name;
@@ -23,7 +23,7 @@ export default eventHandler(async () => {
 
     return {
       isPlaying,
-      name,
+      title,
       image,
       url,
       artist,
