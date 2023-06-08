@@ -44,6 +44,10 @@ export default {
   },
   mounted() {
     this.createBall();
+    this.createBall();
+    this.createBall();
+    this.createBall();
+    this.createBall();
     this.animateBalls();
   },
   methods: {
@@ -60,7 +64,7 @@ export default {
         y: Math.random() * (window.innerHeight - 50),
         dx: (Math.random() - 0.5) * 10,
         dy: (Math.random() - 0.5) * 10,
-        size: 40,
+        size: 30,
         lifespan: 0,
       };
 
