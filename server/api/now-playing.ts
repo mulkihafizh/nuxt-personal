@@ -10,7 +10,9 @@ export default eventHandler(async () => {
     const title = track.name;
     const image = track.album.images[0].url;
     const url = track.external_urls.spotify;
-    const artist = track.artists[0].name;
+    const artist = track.item.artists
+      .map((_artist: any) => _artist.name)
+      .join(", ");
     const duration = track.duration_ms;
     const isPlaying = false;
 
