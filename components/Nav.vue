@@ -2,8 +2,8 @@
   <nav
     class="text-white flex items-center gap-6 justify-center py-4 fixed w-full backdrop-blur-3xl z-20"
   >
-    <nuxt-link to="/">HOME</nuxt-link>|
-    <nuxt-link to="/me">ME</nuxt-link>
+    <nuxt-link to="/">HOME</nuxt-link>| <nuxt-link to="/me">ME</nuxt-link>|
+    <nuxt-link to="/projects">PROJECTS</nuxt-link>
   </nav>
 </template>
 

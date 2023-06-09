@@ -1,5 +1,5 @@
 <template>
-  <div id="body" class="text-white min-h-screen" v-if="isLoaded === true">
+  <div id="body" class="min-h-screen pb-10" v-if="isLoaded === true">
     <div
       id="header"
       v-if="isUserLoaded === true"
@@ -36,19 +36,31 @@
           <div
             class="techItem flex flex-col gap-2 items-center justify-between"
           >
-            <nuxt-img class="w-3/4" src="/images/js.png" />
+            <nuxt-img
+              placeholder
+              class="w-3/4 min-h-[50px]"
+              src="/images/js.png"
+            />
             <p class="text-2xl max-sm:text-lg text-center">Javascript</p>
           </div>
           <div
             class="techItem flex flex-col gap-2 items-center justify-between"
           >
-            <nuxt-img class="w-3/4" src="/images/vue.png" />
+            <nuxt-img
+              placeholder
+              class="w-3/4 min-h-[50px]"
+              src="/images/vue.png"
+            />
             <p class="text-2xl max-sm:text-lg text-center">Vue.js</p>
           </div>
           <div
             class="techItem flex flex-col gap-2 items-center justify-between"
           >
-            <nuxt-img class="w-3/4" src="/images/react.png" />
+            <nuxt-img
+              placeholder
+              class="w-3/4 min-h-[50px]"
+              src="/images/react.png"
+            />
             <p class="text-2xl max-sm:text-lg text-center">React.js</p>
           </div>
         </div>
@@ -161,12 +173,12 @@
           </a>
 
           <div
-            class="wrapTops grid max-md:grid-cols-2 max-lg:grid-rows-2 max-md:col-span-2 gap-3"
+            class="wrapTops grid max-md:grid-cols-2 max-lg:grid-rows-1 max-sm:grid-rows-1 max-md:col-span-2 gap-3"
           >
             <a
               :href="topArtist.url"
               target="_blank"
-              class="wrapTopArtist hover:bg-zinc-800 rounded-3xl duration-300 p-[5%] flex flex-col items-center max-sm:col-span-1"
+              class="wrapTopArtist hover:bg-zinc-800 rounded-3xl duration-300 sm:p-[5%] flex flex-col items-center max-sm:col-span-1"
             >
               <p
                 class="text-3xl max-lg:text-2xl text-center max-sm:text-sm font-bold pb-4"
@@ -190,7 +202,7 @@
             <a
               :href="topTrack.url"
               target="_blank"
-              class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 p-[5%] flex flex-col items-center"
+              class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 sm:p-[5%] flex flex-col items-center"
             >
               <p
                 class="text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 text-center"
