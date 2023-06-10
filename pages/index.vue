@@ -12,7 +12,7 @@
         <p class="text-6xl max-sm:text-2xl font-bold">
           Hi, I am {{ user.name }}
         </p>
-        <welcome />
+        <welcome class="h-8" />
         <p class="text-xl max-sm:text-sm font-medium max-w-2xl leading-10">
           I'm a passionate individual with a diverse range of interests and
           hobbies. <br />
