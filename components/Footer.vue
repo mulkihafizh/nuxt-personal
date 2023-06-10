@@ -36,14 +36,6 @@ export default {
       const documentHeight = document.body.offsetHeight;
 
       this.isAtBottom = windowHeight + scrollY + 1 >= documentHeight;
-      console.log(
-        "windowHeight",
-        windowHeight,
-        "scrollY",
-        scrollY,
-        "documentHeight",
-        documentHeight
-      );
       return this.isAtBottom;
     },
   },

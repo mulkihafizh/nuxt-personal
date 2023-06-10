@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   modules: ["@nuxt/image-edge"],
   app: {
+    pageTransition: { name: "page", mode: "out-in" },
     head: {
       title: "Home",
       charset: "utf-8",
