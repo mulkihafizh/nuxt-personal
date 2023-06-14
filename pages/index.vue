@@ -49,9 +49,16 @@
     </div>
   </div>
 </template>
+<script setup>
+useHead({
+  title: "Home",
+});
+</script>
+
 <script>
 export default {
   name: "Index",
+
   data() {
     return {
       isLoaded: false,

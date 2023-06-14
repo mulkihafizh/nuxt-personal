@@ -229,9 +229,19 @@
     </div>
   </div>
 </template>
+<script setup>
+useHead({
+  title: "Me",
+});
+</script>
 <script>
 export default {
-  name: "Index",
+  name: "Me",
+  head() {
+    return {
+      title: "Me",
+    };
+  },
   data() {
     return {
       isLoaded: false,

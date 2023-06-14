@@ -95,11 +95,21 @@
     </div>
   </div>
 </template>
+<script setup>
+useHead({
+  title: "Projects",
+});
+</script>
 
 <script>
 import { projects } from "~/data/project.ts";
 
 export default {
+  head() {
+    return {
+      title: "Projects",
+    };
+  },
   data() {
     return {
       currentPage: 1,
