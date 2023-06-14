@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="b border-t-[0.2px] py-2 dark:border-zinc-700 dark:bg-zinc-950 text-center fixed w-full z-50 bottom-0 duration-300"
+    class="b border-t-[0.2px] py-2 bg-gray-100 dark:border-zinc-700 dark:bg-zinc-950 text-center fixed w-full z-50 bottom-0 duration-300"
     :class="{ 'opacity-100': isAtBottom, 'opacity-0': !isAtBottom }"
   >
     <p>mulkihafizh ©{{ new Date().getFullYear() }}</p>
