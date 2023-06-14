@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
-      
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       link: [
@@ -25,7 +24,6 @@ export default defineNuxtConfig({
     injectPosition: 0,
     viewer: true,
   },
-
   plugins: [{ src: "~/plugins/aos.ts", mode: "client" }],
   runtimeConfig: {
     spotifyClientId: process.env.CLIENT_ID,

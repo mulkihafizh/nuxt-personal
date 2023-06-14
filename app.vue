@@ -1,6 +1,6 @@
 <template>
   <div
-    class="font-main duration-300 dark:bg-zinc-950 min-h-screen dark:text-white bg-gray-100 [&>*]:duration-300"
+    class="font-main duration-300 dark:bg-zinc-950 min-h-screen dark:text-white bg-gray-100"
   >
     <Nav />
     <Footer />
