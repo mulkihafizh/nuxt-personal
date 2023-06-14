@@ -9,7 +9,7 @@
       <div class="navigateButton flex justify-between">
         <button
           @click="previousPage"
-          class="bg-zinc-800 rounded-xl px-4 py-1 text-xl duration-300"
+          class="bg-gray-200 dark:bg-zinc-800 rounded-xl px-4 py-1 text-xl duration-300"
           :disabled="!hasPreviousPage"
           :class="!hasPreviousPage ? 'opacity-0 pointer-none' : ''"
         >
@@ -17,19 +17,19 @@
         </button>
         <button
           @click="nextPage"
-          class="bg-zinc-800 rounded-xl px-4 py-1 text-xl duration-500"
+          class="bg-gray-200 dark:bg-zinc-800 rounded-xl px-4 py-1 text-xl duration-500"
           :disabled="!hasNextPage"
           :class="!hasNextPage ? 'opacity-0 pointer-none' : ''"
         >
           Next Page
         </button>
       </div>
-      <div class="grid gap-2 grid-cols-2 max-lg:grid-cols-1">
+      <div class="grid gap-4 grid-cols-2 max-lg:grid-cols-1">
         <transition-group name="project-transition" mode="out-in">
           <div
             v-for="project in displayedProjects"
             :key="project.name"
-            class="bg-zinc-900 min-h-[230px] p-4 rounded-xl shadow-lg grid grid-cols-2 max-sm:grid-cols-1 gap-4 items-center"
+            class="bg-gray-200 dark:bg-zinc-900 min-h-[230px] p-4 rounded-xl shadow-lg grid grid-cols-2 max-sm:grid-cols-1 gap-4 items-center"
           >
             <div class="projectImg overflow-hidden">
               <nuxt-img
@@ -48,14 +48,16 @@
                   <div v-for="tech in project.tech">
                     <div
                       :key="tech"
-                      class="bg-zinc-800 rounded-xl px-2 py-1 text-sm mr-2"
+                      class="dark:bg-zinc-800 bg-gray-300 rounded-xl px-2 py-1 text-sm mr-2"
                     >
                       {{ tech }}
                     </div>
                   </div>
                 </div>
                 <div class="contribution flex">
-                  <p class="bg-zinc-800 rounded-xl px-2 py-1 text-sm mr-2">
+                  <p
+                    class="dark:bg-zinc-800 bg-gray-300 rounded-xl px-2 py-1 text-sm mr-2"
+                  >
                     {{ project.contribution }}
                   </p>
                 </div>

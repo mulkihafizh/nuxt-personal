@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxt/image-edge"],
+  modules: ["@nuxt/image-edge", "@nuxtjs/color-mode", "@nuxtjs/tailwindcss"],
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
@@ -15,13 +15,17 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["~/assets/css/tailwind.css"],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
+  colorMode: {
+    classSuffix: "",
   },
+  tailwindcss: {
+    cssPath: "~/assets/css/tailwind.css",
+    configPath: "tailwind.config.ts",
+    exposeConfig: false,
+    injectPosition: 0,
+    viewer: true,
+  },
+
   plugins: [{ src: "~/plugins/aos.ts", mode: "client" }],
   runtimeConfig: {
     spotifyClientId: process.env.CLIENT_ID,

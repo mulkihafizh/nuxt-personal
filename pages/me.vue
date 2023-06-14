@@ -178,7 +178,7 @@
             <a
               :href="topArtist.url"
               target="_blank"
-              class="wrapTopArtist hover:bg-zinc-800 rounded-3xl duration-300 sm:p-[5%] flex flex-col items-center max-sm:col-span-1"
+              class="wrapTopArtist hover:bg-gray-200 dark:hover:bg-zinc-800 rounded-3xl duration-300 sm:p-[5%] flex flex-col items-center max-sm:col-span-1"
             >
               <p
                 class="text-3xl max-lg:text-2xl text-center max-sm:text-sm font-bold pb-4"
@@ -202,7 +202,7 @@
             <a
               :href="topTrack.url"
               target="_blank"
-              class="wrapSong hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 sm:p-[5%] flex flex-col items-center"
+              class="wrapSong hover:bg-gray-200 dark:hover:bg-zinc-800 rounded-3xl max-sm:order-3 duration-300 sm:p-[5%] flex flex-col items-center"
             >
               <p
                 class="text-3xl max-lg:text-2xl max-sm:text-sm font-bold pb-4 text-center"

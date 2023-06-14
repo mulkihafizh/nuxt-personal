@@ -10,9 +10,9 @@
         >...</span
       >
       <span
-        class="duration-1000"
+        class="duration-300"
         v-bind:class="{
-          'opacity-1 bg-zinc-800 px-1': guessed === true,
+          'opacity-1 bg-gray-300 dark:bg-zinc-800  px-1': guessed === true,
           'opacity-0 ': guessed === false,
         }"
       >
@@ -20,39 +20,50 @@
       </span>
     </p>
     <p
-      class="duration-1000 max-sm:text-sm"
+      class="duration-300 max-sm:text-sm"
       v-bind:class="{
         'opacity-1': guessed === true,
-        'opacity-0 pointer-events-none': guessed === false,
+        'opacity-0 pointer--none': guessed === false,
       }"
     >
       I usually and mostly listen to indie folk music, especially when I'm
       studying or working. I also into some other genres like J Pop. <br />
       My favorite indie folk artists are
-      <a target="_blank" :href="novoAmor.url" class="bg-zinc-800 px-1">{{
-        novoAmor.name
-      }}</a
+      <a
+        target="_blank"
+        :href="novoAmor.url"
+        class="bg-gray-300 dark:bg-zinc-800 px-1"
+        >{{ novoAmor.name }}</a
       >,
-      <a target="_blank" :href="hollowCoves.url" class="bg-zinc-800 px-1">{{
-        hollowCoves.name
-      }}</a>
+      <a
+        target="_blank"
+        :href="hollowCoves.url"
+        class="bg-gray-300 dark:bg-zinc-800 px-1"
+        >{{ hollowCoves.name }}</a
+      >
       and
-      <a target="_blank" :href="bonIver.url" class="bg-zinc-800 px-1">{{
-        bonIver.name
-      }}</a>
+      <a
+        target="_blank"
+        :href="bonIver.url"
+        class="bg-gray-300 dark:bg-zinc-800 px-1"
+        >{{ bonIver.name }}</a
+      >
     </p>
     <p class="py-4">Guess One :</p>
     <div class="options grid grid-rows-4 gap-2 text-lg">
       <div class="flex gap-5 max-sm:gap-2 items-center max-sm:flex-col">
         <button
           @click="guess()"
-          v-bind:class="{ 'border-red-600 ': guessed === true }"
-          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-500"
+          v-bind:class="{
+            'border-red-600 ': guessed === true,
+            'dark:border-white border-gray-400': guessed === false,
+          }"
+          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-300"
         >
           Hip Hop
         </button>
         <p
-          class="duration-500 text-base max-sm:text-sm"
+          class="duration-300 text-base max-sm:text-sm"
           v-bind:class="{
             'opacity-1': guessed === true,
             'opacity-0 pointer-events-none': guessed === false,
@@ -64,13 +75,16 @@
       <div class="flex gap-5 max-sm:gap-2 items-center max-sm:flex-col">
         <button
           @click="guess()"
-          v-bind:class="{ 'border-green-600 ': guessed === true }"
-          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-500"
+          v-bind:class="{
+            'border-green-600 ': guessed === true,
+            'dark:border-white border-gray-400': guessed === false,
+          }"
+          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-300"
         >
           Indie Folk
         </button>
         <p
-          class="duration-500 text-base max-sm:text-sm"
+          class="duration-300 text-base max-sm:text-sm"
           v-bind:class="{
             'opacity-1': guessed === true,
             'opacity-0 pointer-events-none': guessed === false,
@@ -82,13 +96,16 @@
       <div class="flex gap-5 max-sm:gap-2 items-center max-sm:flex-col">
         <button
           @click="guess()"
-          v-bind:class="{ 'border-red-600 ': guessed === true }"
-          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-500"
+          v-bind:class="{
+            'border-red-600 ': guessed === true,
+            'dark:border-white border-gray-400': guessed === false,
+          }"
+          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-300"
         >
           J Pop
         </button>
         <p
-          class="duration-500 text-base max-sm:text-sm"
+          class="duration-300 text-base max-sm:text-sm"
           v-bind:class="{
             'opacity-1': guessed === true,
             'opacity-0 pointer-events-none': guessed === false,
@@ -100,13 +117,16 @@
       <div class="flex gap-5 max-sm:gap-2 items-center max-sm:flex-col">
         <button
           @click="guess()"
-          v-bind:class="{ ' border-red-600 ': guessed === true }"
-          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-500"
+          v-bind:class="{
+            ' border-red-600 ': guessed === true,
+            'dark:border-white border-gray-400': guessed === false,
+          }"
+          class="border-[1px] min-w-[10%] max-sm:w-full rounded-lg px-2 py-1 duration-300"
         >
           Rock
         </button>
         <p
-          class="duration-500 text-base max-sm:text-sm"
+          class="duration-300 text-base max-sm:text-sm"
           v-bind:class="{
             'opacity-1': guessed === true,
             'opacity-0 pointer-events-none': guessed === false,

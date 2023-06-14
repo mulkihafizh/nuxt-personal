@@ -1,7 +1,7 @@
 <template>
   <div class="ball-background absolute w-full h-screen overflow-hidden">
     <div
-      class="text-2xl text-white right-0 flex bottom-8 justify-end p-3 absolute items-center gap-2"
+      class="text-2xl dark:text-white right-0 flex bottom-8 justify-end p-3 absolute items-center gap-2"
     >
       <p
         class="text-base duration-300 removeText opacity-0"
@@ -15,7 +15,7 @@
         @mouseover="toggleMessage = true"
         @mouseout="toggleMessage = false"
       >
-        <p class="px-4 py-1 bg-zinc-900 rounded-full">!</p>
+        <p class="px-4 py-1 bg-gray-300 dark:bg-zinc-900 rounded-full">!</p>
       </div>
     </div>
     <div

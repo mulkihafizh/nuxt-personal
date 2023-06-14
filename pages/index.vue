@@ -1,5 +1,5 @@
 <template>
-  <div id="body" class="text-white min-h-screen">
+  <div id="body" class="dark:text-white min-h-screen">
     <balls />
     <div
       id="header"
@@ -24,7 +24,7 @@
           >
             <nuxt-link to="/me">
               <button
-                class="bg-zinc-900 px-12 py-5 text-xl rounded-3xl max-sm:px-6 max-sm:py-3 max-sm:text-base"
+                class="dark:bg-zinc-900 bg-gray-200 px-12 py-5 text-xl rounded-3xl max-sm:px-6 max-sm:py-3 max-sm:text-base"
               >
                 Learn More About Me
               </button>

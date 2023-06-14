@@ -1,5 +1,7 @@
 <template>
-  <div class="font-main bg-zinc-950 min-h-screen text-white">
+  <div
+    class="font-main duration-300 dark:bg-zinc-950 min-h-screen dark:text-white bg-gray-100 [&>*]:duration-300"
+  >
     <Nav />
     <Footer />
     <NuxtPage />

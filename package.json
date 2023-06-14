@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "@nuxt/image-edge": "^1.0.0-28094923.e859bba",
+    "@nuxtjs/color-mode": "^3.2.0",
+    "@nuxtjs/tailwindcss": "^6.7.2",
     "@types/aos": "^3.0.4",
     "@types/node": "^18",
     "@types/spotify-web-api-node": "^5.0.7",
@@ -20,7 +22,9 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "spotify-web-api-node": "^5.0.2",
-    "vuex": "^4.1.0"
+    "spotify-web-api-node": "^5.0.2"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }
