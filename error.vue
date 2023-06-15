@@ -35,14 +35,14 @@ h1
 export default {
   methods: {
     createCircle(event) {
-      const numcircles = 1; // Number of circles to create per mouse move
+      const numcircles = 1;
       const container = document.getElementById("background");
 
       for (let i = 0; i < numcircles; i++) {
         const circle = document.createElement("div");
         circle.setAttribute("class", "circle");
-        circle.style.left = `${event.clientX}px`; // X position of the mouse move
-        circle.style.top = `${event.clientY}px`; // Y position of the mouse move
+        circle.style.left = `${event.clientX}px`;
+        circle.style.top = `${event.clientY}px`;
 
         container.appendChild(circle);
 
@@ -51,20 +51,18 @@ export default {
     },
 
     animatecircle(circle) {
-      const duration = 1000; // Duration of the falling animation in milliseconds
+      const duration = 1000; 
       const circletY = parseInt(circle.style.top);
-      const endY = window.innerHeight + 20; // Final position of the circle outside the viewport
+      const endY = window.innerHeight + 20; 
 
       circle.style.animation = `fall ${duration}ms linear`;
       circle.style.animationFillMode = "forwards";
       circle.style.animationPlayState = "running";
 
-      // Remove the circle from the container after the animation finishes
       setTimeout(() => {
         circle.remove();
       }, duration);
 
-      // Reset the animation properties to reuse the circle element
       setTimeout(() => {
         circle.style.top = `${circletY}px`;
         circle.style.animation = "";
@@ -79,8 +77,8 @@ export default {
   transform: scale(1.1);
   position: absolute;
   pointer-events: none;
-  width: 15px; /* Adjust the width as desired */
-  height: 15px; /* Adjust the height as desired */
+  width: 15px;
+  height: 15px;
   background-color: rgb(56, 255, 152);
   border-radius: 50%;
   box-shadow: #00dc82 0px 0px 10px 2px;

@@ -5,7 +5,6 @@
   >
     <div class="project flex flex-col gap-2">
       <h1 class="text-4xl">Projects</h1>
-
       <div class="navigateButton flex justify-between">
         <button
           @click="previousPage"

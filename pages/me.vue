@@ -71,7 +71,7 @@
       <question />
       <div
         v-if="
-          isLoaded === true &&
+          isLoaded &&
           isTopArtistLoaded &&
           isNowPlayingLoaded &&
           isTopTrackLoaded
@@ -85,12 +85,12 @@
             :href="song.url"
             target="_blank"
             class="wrapSong col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
-            v-if="isPlaying === true && isNowPlayingLoaded === true"
+            v-if="isNowPlayingLoaded === true"
           >
             <p
               class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
             >
-              Now Playing :
+              {{ isPlaying ? "Now Playing :" : "Last Played :" }}
             </p>
             <div
               class="nowPlayingWrap grid grid-cols-2 max-sm:justify-center gap-4 max-sm:grid-cols-1"
@@ -99,6 +99,7 @@
                 <nuxt-img placeholder loading="lazy" :src="song.img" alt="" />
 
                 <div
+                  v-if="isPlaying"
                   class="visualizer absolute h-8 w-8 p-2 rounded-lg self-center opacity-60 bg-white left-2 bottom-2 z-10 flex items-end gap-1 max-sm:left-4"
                 >
                   <div
@@ -133,45 +134,6 @@
               </div>
             </div>
           </a>
-          <a
-            :href="song.url"
-            target="_blank"
-            class="wrapSong col-span-2 flex flex-col duration-300 justify-center rounded-3xl p-[5%] relative overflow-hidden"
-            v-if="isPlaying === false && isNowPlayingLoaded === true"
-          >
-            <p
-              class="text-3xl max-lg:text-2xl max-sm:text-2xl font-bold pb-4 z-10"
-            >
-              Last Played :
-            </p>
-            <div
-              class="nowPlayingWrap grid grid-cols-2 max-sm:justify-center gap-4 max-sm:grid-cols-1"
-            >
-              <div class="wrapImage relative">
-                <nuxt-img placeholder loading="lazy" :src="song.img" alt="" />
-              </div>
-
-              <div class="songInfo flex flex-col justify-end">
-                <p class="text-2xl max-sm:text-xl font-bold pt-4">
-                  {{ song.name }}
-                </p>
-                <p class="text-xl max-sm:text-l font-medium">
-                  {{ song.artist }}
-                </p>
-                <p class="text-l">
-                  {{ formatDuration(currentTime) }} /
-                  {{ formatDuration(song.duration) }}
-                </p>
-                <div class="duration w-full h-1 bg-white mt-2">
-                  <div
-                    class="durationBar h-full bg-green-500"
-                    :style="`width: ${progress}%`"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </a>
-
           <div
             class="wrapTops grid max-md:grid-cols-2 max-lg:grid-rows-1 max-sm:grid-rows-1 max-md:col-span-2 gap-3"
           >
