@@ -99,17 +99,28 @@
                 <nuxt-img placeholder loading="lazy" :src="song.img" alt="" />
 
                 <div
-                  v-if="isPlaying"
                   class="visualizer absolute h-8 w-8 p-2 rounded-lg self-center opacity-60 bg-white left-2 bottom-2 z-10 flex items-end gap-1 max-sm:left-4"
                 >
                   <div
-                    class="bar1 animate-visual-bar w-2 bg-gray-800 z-10"
+                    v-bind:class="{
+                      playing: isPlaying,
+                      paused: !isPlaying,
+                    }"
+                    class="bar1 w-2 bg-gray-800 animate-visual-bar z-10"
                   ></div>
                   <div
-                    class="bar2 animate-visual-bar w-2 bg-gray-800 z-10"
+                    v-bind:class="{
+                      playing: isPlaying,
+                      paused: !isPlaying,
+                    }"
+                    class="bar2 w-2 bg-gray-800 animate-visual-bar z-10"
                   ></div>
                   <div
-                    class="bar3 animate-visual-bar w-2 bg-gray-800 z-10"
+                    v-bind:class="{
+                      playing: isPlaying,
+                      paused: !isPlaying,
+                    }"
+                    class="bar3 w-2 bg-gray-800 animate-visual-bar z-10"
                   ></div>
                 </div>
               </div>
@@ -301,3 +312,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.paused {
+  animation-play-state: paused;
+}
+
+.playing {
+  animation-play-state: running;
+}
+</style>
