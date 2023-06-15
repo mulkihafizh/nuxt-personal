@@ -315,6 +315,7 @@ export default {
 
 <style scoped>
 .paused {
+  min-height: 30%;
   animation-play-state: paused;
 }
 
