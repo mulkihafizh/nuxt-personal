@@ -4,14 +4,14 @@ useHead({
     {
       src: "https://www.googletagmanager.com/gtag/js?id=G-1V9QGGNH8E",
       async: true,
-      children: `        
-      window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
+    },
+    {
+      children: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
         gtag("js", new Date());
-
-        gtag("config", "G-1V9QGGNH8E");`,
+        gtag("config", "G-1V9QGGNH8E");
+      `,
     },
   ],
 });
