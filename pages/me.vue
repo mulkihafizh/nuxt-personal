@@ -204,7 +204,7 @@
 </template>
 <script setup>
 useSeoMeta({
-  title: "Me",
+  title: "Kistar Me",
   description: "Kistar About Page",
 });
 </script>

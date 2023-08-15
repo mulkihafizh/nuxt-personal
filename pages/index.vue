@@ -51,7 +51,7 @@
 </template>
 <script setup>
 useSeoMeta({
-  title: "Home",
+  title: "Kistar Home",
   description: "Kistar Home",
 });
 </script>

@@ -96,7 +96,7 @@
 </template>
 <script setup>
 useSeoMeta({
-  title: "Projects",
+  title: "Kistar Projects",
   description: "Kistar Projects",
 });
 </script>
