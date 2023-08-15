@@ -50,8 +50,9 @@
   </div>
 </template>
 <script setup>
-useHead({
+useSeoMeta({
   title: "Home",
+  description: "Kistar Home",
 });
 </script>
 

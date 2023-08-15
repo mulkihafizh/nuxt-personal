@@ -6,11 +6,10 @@ useHead({
       async: true,
     },
     {
-      children: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag("js", new Date());
-        gtag("config", "G-1V9QGGNH8E");
+      children: `window.dataLayer = window.dataLayer || [];
+                 function gtag(){dataLayer.push(arguments);}
+                 gtag("js", new Date());
+              gtag("config", "G-1V9QGGNH8E");
       `,
     },
   ],

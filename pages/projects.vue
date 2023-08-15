@@ -95,8 +95,9 @@
   </div>
 </template>
 <script setup>
-useHead({
+useSeoMeta({
   title: "Projects",
+  description: "Kistar Projects",
 });
 </script>
 

@@ -203,8 +203,9 @@
   </div>
 </template>
 <script setup>
-useHead({
+useSeoMeta({
   title: "Me",
+  description: "Kistar About Page",
 });
 </script>
 <script>
