@@ -96,8 +96,8 @@
 </template>
 <script setup>
 useSeoMeta({
-  title: "Kistar Projects",
-  description: "Kistar Projects",
+  title: "Mulki Hafizh | Projects",
+  description: "Mulki Hafizh | Projects",
 });
 </script>
 

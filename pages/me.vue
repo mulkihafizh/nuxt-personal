@@ -204,8 +204,8 @@
 </template>
 <script setup>
 useSeoMeta({
-  title: "Kistar Me",
-  description: "Kistar About Page",
+  title: "Mulki Hafizh | Me",
+  description: "Mulki Hafizh | About Page",
 });
 </script>
 <script>
