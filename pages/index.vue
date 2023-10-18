@@ -38,7 +38,6 @@
         <div class="profileImage">
           <nuxt-img
             placeholder
-            loading="lazy"
             v-if="isLoaded === true && isUserLoaded === true"
             alt="Profile Image"
             class="rounded-full w-full h-full"
