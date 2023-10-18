@@ -2,6 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+
 .borderNuxt {
   background: radial-gradient(
         circle at 100% 100%,
