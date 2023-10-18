@@ -39,6 +39,7 @@
     url("../../fonts/programme-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap
 }
 
 .bar1 {
