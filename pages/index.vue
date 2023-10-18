@@ -48,7 +48,7 @@
 </template>
 <script setup>
 useSeoMeta({
-  title: "Mulki Hafizh | Home",
+  title: "Mulki Hafizh",
   description: "Mulki Hafizh | Home",
 });
 
