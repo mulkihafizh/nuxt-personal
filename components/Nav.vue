@@ -13,7 +13,7 @@ const setColorTheme = (newTheme: Theme) => {
       <nuxt-link to="/">HOME</nuxt-link>| <nuxt-link to="/me">ME</nuxt-link>|
       <nuxt-link to="/projects">PROJECTS</nuxt-link>
     </div>
-    <button
+    <div
       class="self-end justify-self-end"
       @click="
         setColorTheme(
@@ -24,6 +24,6 @@ const setColorTheme = (newTheme: Theme) => {
     >
       <i v-if="$colorMode.preference == 'light'" class="fa-solid fa-moon"></i>
       <i v-else class="fa-solid fa-sun"></i>
-    </button>
+    </div>
   </nav>
 </template>

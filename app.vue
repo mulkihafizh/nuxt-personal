@@ -1,5 +1,8 @@
 <script setup>
 useHead({
+  htmlAttrs: {
+    lang: "en",
+  },
   script: [
     {
       src: "https://www.googletagmanager.com/gtag/js?id=G-1V9QGGNH8E",
