@@ -3,7 +3,6 @@
     <balls />
     <div
       id="header"
-      v-if="isLoaded === true && isUserLoaded === true"
       class="h-screen grid max-sm:grid-cols-1 grid-cols-2 px-[10%] z-10 relative"
     >
       <div
@@ -38,7 +37,6 @@
         <div class="profileImage">
           <nuxt-img
             placeholder
-            v-if="isLoaded === true && isUserLoaded === true"
             alt="Profile Image"
             class="rounded-full w-full h-full"
             :src="user.image"
@@ -53,29 +51,14 @@ useSeoMeta({
   title: "Mulki Hafizh | Home",
   description: "Mulki Hafizh | Home",
 });
+
+const user = await useFetch("/api/me").then((res) => {
+  return res.data.value;
+});
 </script>
 
 <script>
 export default {
   name: "Index",
-
-  data() {
-    return {
-      isLoaded: false,
-      user: null,
-      isUserLoaded: false,
-    };
-  },
-  methods: {
-    async getUser() {
-      const user = await $fetch("/api/me");
-      this.user = user;
-      this.isUserLoaded = true;
-      this.isLoaded = true;
-    },
-  },
-  mounted() {
-    this.getUser();
-  },
 };
 </script>
